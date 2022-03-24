@@ -4,7 +4,7 @@ import Editor from '@monaco-editor/react';
 const files = {
   'script.js': {
     name: 'script.js',
-    language: 'python',
+    language: 'javascript',
     value: '//Hello',
   },
   'style.css': {
@@ -53,7 +53,7 @@ function MonacoEditor() {
       </button>
       <Editor
         height="80vh"
-        theme="monokai"
+        theme="vs-dark"
         path={file.name}
         defaultLanguage={file.language}
         defaultValue={file.value}
