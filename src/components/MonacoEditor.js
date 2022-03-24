@@ -35,8 +35,8 @@ function MonacoEditor() {
     <div
       style={{
         width: '50%',
-        'margin-right': 'auto',
-        'margin-left': 'auto',
+        marginRight: 'auto',
+        marginLeft: 'auto',
         height: '50%',
       }}
     >
