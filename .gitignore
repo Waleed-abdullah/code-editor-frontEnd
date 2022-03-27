@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # test files
-/src/sampleCode
-/src/Test
+/src/sampleCode.js
+/src/Test.js
