@@ -39,5 +39,5 @@ export {
     createNewFile,
     updateFile,
     renameFile,
-    deleteFile,
+    deleteFile
 }
