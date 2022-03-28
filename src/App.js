@@ -1,10 +1,11 @@
 import React from "react";
-import Homepage from "./components/Homepage/Homepage";
-import Test from "./Test";
+import PlayGround from "./components/CodePlayGround/PlayGround";
 
 const App = () => {
   return(
-    <Test/>
+    <div>
+      <PlayGround/>
+    </div>
   )
 }
 
