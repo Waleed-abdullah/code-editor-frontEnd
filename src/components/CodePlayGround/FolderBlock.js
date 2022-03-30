@@ -3,14 +3,13 @@ import {AiFillFolder} from 'react-icons/ai'
 import FileBlock from './FileBlock'
 
 const FolderBlock = ({name, folders, counter}) => {
-    const [hide, setHide] = useState(false)
+    const [show, setShow] = useState(false)
     const seenFolder = {}
     const rootFiles = []
-    const keys = Object.keys(seenFolder)
-    const padding = counter + 'em'
+ 
 
     for (let i = 0; i < folders.length; ++i){
-        if (counter != folders[i].length-1){
+        if (counter !== folders[i].length-1){
             if (seenFolder[folders[i][counter]]){
                 seenFolder[folders[i][counter]].push(folders[i])
             }
@@ -24,10 +23,13 @@ const FolderBlock = ({name, folders, counter}) => {
         }
     }
     
+    const keys = Object.keys(seenFolder)
+    const padding = counter + 'em'
     ++counter
 
+
     const handleClick = () => {
-        setHide(!hide)
+        setShow(!show)
     }
 
   return (
@@ -37,13 +39,13 @@ const FolderBlock = ({name, folders, counter}) => {
             <div className='pl-1'>{name}</div> 
         </div>
 
-        {hide ?
+        {show ?
             keys.map((key) => (
                 <FolderBlock key={key} name={key} folders={seenFolder[key]} counter={counter}/>
             )) : console.log('')
         }
 
-        {hide ?
+        {show ?
             rootFiles.map((file) => (
                 <FileBlock key={file} name={file} counter={counter}/>
             )) : console.log('')

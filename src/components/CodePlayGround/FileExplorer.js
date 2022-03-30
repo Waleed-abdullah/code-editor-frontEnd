@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
