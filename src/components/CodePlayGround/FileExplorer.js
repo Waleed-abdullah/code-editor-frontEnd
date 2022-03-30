@@ -1,57 +1,37 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ReactTooltip from 'react-tooltip';
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-const FileExplorer = React.memo(() => {
+import { getProjectDir } from '../../services/fileExplorer/apiCalls';
+
+const FileExplorer = () => {
+    const [folders, setFolders] = useState()
+    const [rootFiles, setRootFiles] = useState()
+    const [keys, setKeys] = useState()
+    
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
 
     const counter = 1;
-    const folders = {
-        assets: [
-          [ 'assets', 'explore_1.PNG' ],
-          [ 'assets', 'explore_2.PNG' ],
-          [ 'assets', 'explore_3.PNG' ],
-          [ 'assets', 'explore_4.PNG' ],
-          [ 'assets', 'explore_5.PNG' ],
-          [ 'assets', 'explore_6.PNG' ],
-          [ 'assets', 'fbClone_1.PNG' ],
-          [ 'assets', 'fbClone_2.PNG' ],
-          [ 'assets', 'fbClone_3.PNG' ],
-          [ 'assets', 'fbClone_4.PNG' ],
-          [ 'assets', 'Imgs', 'hehe', 'music_2.PNG' ],
-          [ 'assets', 'Imgs', 'hehe', 'music_3.PNG' ],
-          [ 'assets', 'Imgs', 'home.png' ],
-          [ 'assets', 'Imgs', 'music_1.PNG' ]
-        ],
-        components: [
-          [ 'components', 'Education.js' ],
-          [ 'components', 'HomePage.css' ],
-          [ 'components', 'HomePage.js' ],
-          [ 'components', 'Navbar.css' ],
-          [ 'components', 'Navbar.js' ],
-          [ 'components', 'ParticleBackground.js' ],
-          [ 'components', 'particleConfig.js' ],
-          [ 'components', 'ProjectItem.js' ],
-          [ 'components', 'Projects.css' ],
-          [ 'components', 'Projects.js' ],
-          [ 'components', 'Skills.css' ],
-          [ 'components', 'Skills.js' ]
-        ]
-      }
 
-      const rootFiles = [ 'App.js', 'index.css', 'index.js' ]
-
-      const keys = Object.keys(folders)
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await getProjectDir('abd', 'TestDir')
+            setFolders(res.seenFolder)
+            setRootFiles(res.rootFiles)
+            setKeys(Object.keys(res.seenFolder))
+        }
+        fetchData()        
+    }, [])
 
     const handleNewFolder = () => {
         console.log(folderSelectedRef.current)
     }
 
     const handleNewFile = () => {
-
+        console.log(fileSelectedRef.current)
     }
 
   return (
@@ -74,21 +54,20 @@ const FileExplorer = React.memo(() => {
             </div>
 
             {/*Render existing folder and files*/}
-            {
+            {keys ?
                 keys.map((key) => (
                     <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef}/>
-                ))
+                )) : console.log()
             }
 
-            {
+            {rootFiles ?
                 rootFiles.map((file) => (
                     <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef}/>
-                ))
+                )) : console.log()
             }
-
         </div>
     </>
   )
-})
+}
 
 export default FileExplorer

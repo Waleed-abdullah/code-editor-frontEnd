@@ -33,11 +33,18 @@ const deleteFile = async (userID, fileName, currProjectName) => {
     console.log(res);
 }
 
+const getProjectDir = async (userID, currProjectName) => {
+    const url = baseURL + 'getFiles/' + userID + '/' + currProjectName;
+    const res = await axios.get(url);
+    return res.data.result;
+}
+
 export {
     createUserFolder,
     createNewProject,
     createNewFile,
     updateFile,
     renameFile,
-    deleteFile
+    deleteFile,
+    getProjectDir,
 }

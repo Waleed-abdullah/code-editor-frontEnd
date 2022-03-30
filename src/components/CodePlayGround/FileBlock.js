@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FileBlock = React.memo(({name, counter, path, fileSelectedRef}) => {
+const FileBlock = ({name, counter, path, fileSelectedRef}) => {
   const padding = counter + 'em'
 
   const handleClick = () => {
@@ -13,6 +13,6 @@ const FileBlock = React.memo(({name, counter, path, fileSelectedRef}) => {
         </div>
     </>
   )
-})
+}
 
 export default FileBlock
