@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import ReactTooltip from 'react-tooltip';
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-const FileExplorer = () => {
+const FileExplorer = React.memo(() => {
+    const folderSelectedRef = useRef('/')
+    const fileSelectedRef = useRef('')
+
     const counter = 1;
     const folders = {
         assets: [
@@ -44,7 +47,7 @@ const FileExplorer = () => {
       const keys = Object.keys(folders)
 
     const handleNewFolder = () => {
-        
+        console.log(folderSelectedRef.current)
     }
 
     const handleNewFile = () => {
@@ -73,19 +76,19 @@ const FileExplorer = () => {
             {/*Render existing folder and files*/}
             {
                 keys.map((key) => (
-                    <FolderBlock key={key+counter} name={key} folders={folders[key]} counter={counter}/>
+                    <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef}/>
                 ))
             }
 
             {
                 rootFiles.map((file) => (
-                    <FileBlock key={file+counter} name={file} counter={counter}/>
+                    <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef}/>
                 ))
             }
 
         </div>
     </>
   )
-}
+})
 
 export default FileExplorer

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import {AiFillFolder} from 'react-icons/ai'
 import FileBlock from './FileBlock'
 
-const FolderBlock = ({name, folders, counter}) => {
+
+const FolderBlock = React.memo(({name, folders, counter, path, folderSelectedRef, fileSelectedRef}) => {
     const [show, setShow] = useState(false)
     const seenFolder = {}
     const rootFiles = []
@@ -30,29 +31,31 @@ const FolderBlock = ({name, folders, counter}) => {
 
     const handleClick = () => {
         setShow(!show)
+        folderSelectedRef.current = path
     }
 
   return (
       <>
         <div className={`w-full flex pt-2 pb-2 mt-2 bg-blue-900 rounded-lg`} style={{paddingLeft: padding}} onClick={handleClick}>
             <div className='py-1'><AiFillFolder/></div>
-            <div className='pl-1'>{name}</div> 
+            <div className='pl-1'>{name}</div>
+            {console.log('Check', name)}
         </div>
 
         {show ?
             keys.map((key) => (
-                <FolderBlock key={key+counter} name={key} folders={seenFolder[key]} counter={counter}/>
+                <FolderBlock key={path + '/' + key} name={key} folders={seenFolder[key]} counter={counter} path={path + '/' + key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef}/>
             )) : console.log('')
         }
 
         {show ?
             rootFiles.map((file) => (
-                <FileBlock key={file+counter} name={file} counter={counter}/>
+                <FileBlock key={path + '/' + file} name={file} counter={counter} path={path + '/' + file} fileSelectedRef={fileSelectedRef}/>
             )) : console.log('')
         }
         
       </>
   )
-}
+})
 
 export default FolderBlock
