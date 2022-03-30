@@ -8,7 +8,6 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
     const seenFolder = {}
     const rootFiles = []
  
-
     for (let i = 0; i < folders.length; ++i){
         if (folders[i].length === counter){
             ;
@@ -34,13 +33,11 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
                 }
             }
         }
-        
     }
     
     const keys = Object.keys(seenFolder)
     const padding = counter + 'em'
     ++counter
-
 
     const handleClick = () => {
         setShow(!show)
