@@ -12,6 +12,11 @@ const createNewProject = async (userID, dirName) => {
     const res = await axios.post(url, {userID, dirName})
 }
 
+const createNewFolder = async (userID, insidePath, folderName, currProjectName) => {
+    const url = baseURL + 'createFolder'
+    const res = await axios.post(url, {userID, insidePath, folderName, currProjectName})
+}
+
 const createNewFile = async (fileName, userID, currProjectName) => {
     const url = baseURL + 'createFile';
     const res = await axios.post(url, {fileName, userID, currProjectName})
@@ -43,6 +48,7 @@ export {
     createUserFolder,
     createNewProject,
     createNewFile,
+    createNewFolder,
     updateFile,
     renameFile,
     deleteFile,

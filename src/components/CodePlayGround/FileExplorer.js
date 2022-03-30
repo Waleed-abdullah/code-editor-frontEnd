@@ -4,7 +4,7 @@ import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-import { getProjectDir } from '../../services/fileExplorer/apiCalls';
+import { getProjectDir, createNewFolder } from '../../services/fileExplorer/apiCalls';
 
 const FileExplorer = () => {
     const [folders, setFolders] = useState()
@@ -17,17 +17,20 @@ const FileExplorer = () => {
     const counter = 1;
 
     useEffect(() => {
-        const fetchData = async () => {
-            const res = await getProjectDir('abd', 'TestDir')
-            setFolders(res.seenFolder)
-            setRootFiles(res.rootFiles)
-            setKeys(Object.keys(res.seenFolder))
-        }
         fetchData()        
     }, [])
 
+    const fetchData = async () => {
+        const res = await getProjectDir('abd', 'TestDir')
+        console.log(res.seenFolder)
+        setFolders(res.seenFolder)
+        setRootFiles(res.rootFiles)
+        setKeys(Object.keys(res.seenFolder))
+    }
+
     const handleNewFolder = () => {
         console.log(folderSelectedRef.current)
+        createNewFolder('abd', folderSelectedRef.current, 'hehe', 'TestDir')
     }
 
     const handleNewFile = () => {
