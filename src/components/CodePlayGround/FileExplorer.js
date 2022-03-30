@@ -73,13 +73,13 @@ const FileExplorer = () => {
             {/*Render existing folder and files*/}
             {
                 keys.map((key) => (
-                    <FolderBlock key={key} name={key} folders={folders[key]} counter={counter}/>
+                    <FolderBlock key={key+counter} name={key} folders={folders[key]} counter={counter}/>
                 ))
             }
 
             {
                 rootFiles.map((file) => (
-                    <FileBlock key={file} name={file} counter={counter}/>
+                    <FileBlock key={file+counter} name={file} counter={counter}/>
                 ))
             }
 

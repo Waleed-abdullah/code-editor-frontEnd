@@ -41,13 +41,13 @@ const FolderBlock = ({name, folders, counter}) => {
 
         {show ?
             keys.map((key) => (
-                <FolderBlock key={key} name={key} folders={seenFolder[key]} counter={counter}/>
+                <FolderBlock key={key+counter} name={key} folders={seenFolder[key]} counter={counter}/>
             )) : console.log('')
         }
 
         {show ?
             rootFiles.map((file) => (
-                <FileBlock key={file} name={file} counter={counter}/>
+                <FileBlock key={file+counter} name={file} counter={counter}/>
             )) : console.log('')
         }
         
