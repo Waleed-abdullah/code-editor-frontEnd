@@ -10,18 +10,31 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
  
 
     for (let i = 0; i < folders.length; ++i){
-        if (counter !== folders[i].length-1){
-            if (seenFolder[folders[i][counter]]){
-                seenFolder[folders[i][counter]].push(folders[i])
+        if (folders[i].length === counter){
+            ;
+        }
+        else{
+            if (counter !== folders[i].length-1){
+                if (seenFolder[folders[i][counter]]){
+                    seenFolder[folders[i][counter]].push(folders[i])
+                }
+                else{
+                    seenFolder[folders[i][counter]] = []
+                    seenFolder[folders[i][counter]].push(folders[i])
+                }
             }
-            else{
-                seenFolder[folders[i][counter]] = []
-                seenFolder[folders[i][counter]].push(folders[i])
+            else {
+                const emptyFolder = folders[i][counter][folders[i][counter].length-1] === '?' ? true : false
+                if (emptyFolder){
+                  seenFolder[folders[i][counter].split('?')[0]] = []
+                  seenFolder[folders[i][counter].split('?')[0]].push(folders[i])
+                }
+                else{
+                    rootFiles.push(folders[i][counter])
+                }
             }
         }
-        else {
-            rootFiles.push(folders[i][counter])
-        }
+        
     }
     
     const keys = Object.keys(seenFolder)

@@ -17,7 +17,7 @@ const FileExplorer = () => {
     const counter = 1;
 
     useEffect(() => {
-        fetchData()        
+        fetchData()
     }, [])
 
     const fetchData = async () => {
