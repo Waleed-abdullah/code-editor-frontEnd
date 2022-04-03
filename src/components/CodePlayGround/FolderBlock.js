@@ -46,10 +46,10 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
 
   return (
       <>
-        <div className={`w-full flex pt-2 pb-2 mt-2 bg-blue-900 rounded-lg`} style={{paddingLeft: padding}} onClick={handleClick}>
+        <button className={`w-full flex pt-2 pb-2 mt-2 bg-blue-900 rounded-lg hover:bg-blue-600`} style={{paddingLeft: padding}} onClick={handleClick}>
             <div className='py-1'><AiFillFolder/></div>
             <div className='pl-1'>{name}</div>
-        </div>
+        </button>
 
         {show ?
             keys.map((key) => (

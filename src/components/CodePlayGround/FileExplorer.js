@@ -1,15 +1,23 @@
 import React, {useEffect, useRef, useState} from 'react';
 import ReactTooltip from 'react-tooltip';
+import Modal from 'react-modal'
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
 import { getProjectDir, createNewFolder } from '../../services/fileExplorer/apiCalls';
+import FolderModal from './FolderModal';
+import { customStyles } from './folderModalStyles'
+
+Modal.setAppElement('#root')
 
 const FileExplorer = () => {
     const [folders, setFolders] = useState()
     const [rootFiles, setRootFiles] = useState()
     const [keys, setKeys] = useState()
+    const treeStructureSymbols = {corner: "└", vertical: "│", horizontal: "─"}
+
+    const [openModal, setOpenModal] = useState(false)
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
@@ -22,19 +30,14 @@ const FileExplorer = () => {
 
     const fetchData = async () => {
         const res = await getProjectDir('abd', 'TestDir')
-        console.log(res.seenFolder)
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
     }
 
-    const handleNewFolder = () => {
-        console.log(folderSelectedRef.current)
-        createNewFolder('abd', folderSelectedRef.current, 'hehe', 'TestDir')
-    }
 
     const handleNewFile = () => {
-        console.log(fileSelectedRef.current)
+        //console.log(fileSelectedRef.current)
     }
 
   return (
@@ -46,11 +49,11 @@ const FileExplorer = () => {
                 <div className='ml-2 font-semibold text-2xl'>Files</div>
                 <div className='flex flex-row-reverse'>
                     <div className='ml-2 py-2'>
-                        <AiFillFileAdd size='20px' data-tip='New File' onClick={handleNewFile}/>
+                        <AiFillFileAdd size='20px' data-tip='New File'/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={handleNewFolder}/>
+                        <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={() => setOpenModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>
@@ -69,6 +72,13 @@ const FileExplorer = () => {
                 )) : console.log()
             }
         </div>
+
+        <Modal
+        isOpen={openModal}
+        style={customStyles}
+        contentLabel="Creat New Folder">
+            <FolderModal setOpenModal={setOpenModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+        </Modal>
     </>
   )
 }
