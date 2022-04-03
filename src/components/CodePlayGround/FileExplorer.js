@@ -6,7 +6,9 @@ import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
 import { getProjectDir} from '../../services/fileExplorer/apiCalls';
+
 import FolderModal from './FolderModal';
+import FileModal from './FileModal';
 import { customStyles } from './folderModalStyles'
 
 Modal.setAppElement('#root')
@@ -16,7 +18,8 @@ const FileExplorer = () => {
     const [rootFiles, setRootFiles] = useState()
     const [keys, setKeys] = useState()
 
-    const [openModal, setOpenModal] = useState(false)
+    const [openFolderModal, setOpenFolderModal] = useState(false)
+    const [openFileModal, setOpenFileModal] = useState(false)
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
@@ -49,11 +52,11 @@ const FileExplorer = () => {
                 <div className='ml-2 font-semibold text-2xl'>Files</div>
                 <div className='flex flex-row-reverse'>
                     <div className='ml-2 py-2'>
-                        <AiFillFileAdd size='20px' data-tip='New File'/>
+                        <AiFillFileAdd size='20px' data-tip='New File' onClick={() => setOpenFileModal(true)}/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={() => setOpenModal(true)}/>
+                        <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={() => setOpenFolderModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>
@@ -74,10 +77,17 @@ const FileExplorer = () => {
         </div>
 
         <Modal
-        isOpen={openModal}
+        isOpen={openFolderModal}
         style={customStyles}
         contentLabel="Creat New Folder">
-            <FolderModal setOpenModal={setOpenModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+            <FolderModal setOpenFolderModal={setOpenFolderModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+        </Modal>
+
+        <Modal
+        isOpen={openFileModal}
+        style={customStyles}
+        contentLabel="Creat New File">
+            <FileModal setOpenFileModal={setOpenFileModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
         </Modal>
     </>
   )

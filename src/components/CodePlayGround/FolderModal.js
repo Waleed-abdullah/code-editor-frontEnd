@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import { createNewFolder } from '../../services/fileExplorer/apiCalls';
 
-const FolderModal = ({setOpenModal, folderSelectedRef, fetchData}) => {
+const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
     const [folderName, setFolderName] = useState('')
     const [folderPath, setFolderPath] = useState(folderSelectedRef.current)
 
@@ -10,7 +10,7 @@ const FolderModal = ({setOpenModal, folderSelectedRef, fetchData}) => {
         event.preventDefault()
         await createNewFolder('abd', folderPath, folderName, 'TestDir')
         fetchData()
-        setOpenModal(false)
+        setOpenFolderModal(false)
     }
 
   return (
@@ -47,7 +47,7 @@ const FolderModal = ({setOpenModal, folderSelectedRef, fetchData}) => {
                 <button 
                 type='button' 
                 className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg' 
-                onClick={() => setOpenModal(false)}>Close</button>
+                onClick={() => setOpenFolderModal(false)}>Close</button>
             </div>
         </form>
     </>

@@ -17,9 +17,9 @@ const createNewFolder = async (userID, insidePath, folderName, currProjectName) 
     await axios.post(url, {userID, insidePath, folderName, currProjectName})
 }
 
-const createNewFile = async (fileName, userID, currProjectName) => {
+const createNewFile = async (userID, insidePath, fileName, currProjectName) => {
     const url = baseURL + 'createFile';
-    await axios.post(url, {fileName, userID, currProjectName})
+    await axios.post(url, {userID, insidePath, fileName, currProjectName})
 }
 
 const updateFile = async (code, userID, currProjectName, currFileName) => {
