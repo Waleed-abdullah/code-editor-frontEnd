@@ -15,7 +15,6 @@ const FileExplorer = () => {
     const [folders, setFolders] = useState()
     const [rootFiles, setRootFiles] = useState()
     const [keys, setKeys] = useState()
-    const treeStructureSymbols = {corner: "└", vertical: "│", horizontal: "─"}
 
     const [openModal, setOpenModal] = useState(false)
     
@@ -33,6 +32,7 @@ const FileExplorer = () => {
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
+        console.log(res);
     }
 
 
@@ -84,3 +84,7 @@ const FileExplorer = () => {
 }
 
 export default FileExplorer
+
+// TODO: Add delete, rename, copy, drag-drop functionality
+// TODO: Remove scroll-bar
+// TODO: Add file icons

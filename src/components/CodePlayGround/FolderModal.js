@@ -4,7 +4,7 @@ import { createNewFolder } from '../../services/fileExplorer/apiCalls';
 
 const FolderModal = ({setOpenModal, folderSelectedRef, fetchData}) => {
     const [folderName, setFolderName] = useState('')
-    const [folderPath, setFolderPath] = useState('')
+    const [folderPath, setFolderPath] = useState(folderSelectedRef.current)
 
     const handleNewFolderSubmit = async (event) => {
         event.preventDefault()
@@ -30,12 +30,13 @@ const FolderModal = ({setOpenModal, folderSelectedRef, fetchData}) => {
 
             <div className='w-full mt-6'>
                 <label className='text-lg text-white' htmlFor='folderPath'>Folder Path: </label><br></br>
-                <input 
+                <input
+                value={folderPath}
                 className='mt-2 w-full rounded-lg h-8 pl-2 pt-2 pb-2' 
                 id='folderPath' 
                 type='text' 
                 name='folderPath' 
-                placeholder={folderSelectedRef.current} 
+                placeholder='Enter Path' 
                 onChange={(event) => setFolderPath(event.target.value)}></input>
             </div>
 
