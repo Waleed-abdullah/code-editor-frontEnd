@@ -6,11 +6,12 @@ import { ImBin2 } from 'react-icons/im'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-import { deleteFile, getProjectDir, deleteFolder } from '../../services/fileExplorer/apiCalls';
+import { getProjectDir} from '../../services/fileExplorer/apiCalls';
 
 import FolderModal from './FolderModal';
 import FileModal from './FileModal';
 import { customStyles } from './folderModalStyles'
+import DeleteModal from './DeleteModal';
 
 Modal.setAppElement('#root')
 
@@ -21,6 +22,7 @@ const FileExplorer = () => {
 
     const [openFolderModal, setOpenFolderModal] = useState(false)
     const [openFileModal, setOpenFileModal] = useState(false)
+    const [openDeleteModal, setOpenDeleteModal] = useState(false)
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
@@ -40,16 +42,6 @@ const FileExplorer = () => {
         console.log(res.seenFolder)
     }
 
-    const handleDelete = async () => {
-        if (selected.current.flag === 'folder'){
-            await deleteFolder('abd', selected.current.path, 'TestDir')
-        }
-        else{
-            await deleteFile('abd', selected.current.path, 'TestDir')
-        }
-        await fetchData()
-    }   
-
   return (
     <>
         <div className='p-2 overflow-auto' style={{width: '20%', height: '92%', backgroundColor: '#1c2333'}}>
@@ -67,7 +59,7 @@ const FileExplorer = () => {
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <ImBin2 size='17px' data-tip='Delete' onClick={handleDelete}/>
+                        <ImBin2 size='17px' data-tip='Delete' onClick={() => setOpenDeleteModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>
@@ -99,6 +91,13 @@ const FileExplorer = () => {
         style={customStyles}
         contentLabel="Creat New File">
             <FileModal setOpenFileModal={setOpenFileModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+        </Modal>
+
+        <Modal
+        isOpen={openDeleteModal}
+        style={customStyles}
+        contentLabel='Delete File/Folder'>
+            <DeleteModal setOpenDeleteModal={setOpenDeleteModal} selected={selected} fetchData={fetchData}/>
         </Modal>
     </>
   )
