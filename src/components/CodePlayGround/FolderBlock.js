@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {AiFillFolder} from 'react-icons/ai'
 import FileBlock from './FileBlock'
-
 
 const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelectedRef}) => {
     const [show, setShow] = useState(false)

@@ -5,7 +5,7 @@ import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-import { getProjectDir, createNewFolder } from '../../services/fileExplorer/apiCalls';
+import { getProjectDir} from '../../services/fileExplorer/apiCalls';
 import FolderModal from './FolderModal';
 import { customStyles } from './folderModalStyles'
 
@@ -36,9 +36,9 @@ const FileExplorer = () => {
     }
 
 
-    const handleNewFile = () => {
-        //console.log(fileSelectedRef.current)
-    }
+    // const handleNewFile = () => {
+    //     //console.log(fileSelectedRef.current)
+    // }
 
   return (
     <>
