@@ -32,9 +32,14 @@ const renameFile = async (userID, currFileName, newFileName, currProjectName) =>
     await axios.post(url, {userID, currFileName, currProjectName, newFileName})
 }
 
-const deleteFile = async (userID, fileName, currProjectName) => {
+const deleteFile = async (userID, insidePath, currProjectName) => {
     const url = baseURL + 'deleteFile';
-    await axios.post(url, {userID, fileName, currProjectName});
+    await axios.post(url, {userID, insidePath, currProjectName});
+}
+
+const deleteFolder = async (userID, insidePath, currProjectName) => {
+    const url = baseURL + 'deleteFolder'
+    await axios.post(url, {userID, insidePath, currProjectName});
 }
 
 const getProjectDir = async (userID, currProjectName) => {
@@ -51,5 +56,6 @@ export {
     updateFile,
     renameFile,
     deleteFile,
+    deleteFolder,
     getProjectDir,
 }

@@ -2,10 +2,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal'
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
+import { ImBin2 } from 'react-icons/im'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
-import { getProjectDir} from '../../services/fileExplorer/apiCalls';
+import { deleteFile, getProjectDir, deleteFolder } from '../../services/fileExplorer/apiCalls';
 
 import FolderModal from './FolderModal';
 import FileModal from './FileModal';
@@ -23,6 +24,7 @@ const FileExplorer = () => {
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
+    const selected = useRef({flag: 'file', path: ''})
 
     const counter = 1;
 
@@ -35,13 +37,18 @@ const FileExplorer = () => {
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
-        console.log(res);
+        console.log(res.seenFolder)
     }
 
-
-    // const handleNewFile = () => {
-    //     //console.log(fileSelectedRef.current)
-    // }
+    const handleDelete = async () => {
+        if (selected.current.flag === 'folder'){
+            await deleteFolder('abd', selected.current.path, 'TestDir')
+        }
+        else{
+            await deleteFile('abd', selected.current.path, 'TestDir')
+        }
+        await fetchData()
+    }   
 
   return (
     <>
@@ -59,20 +66,24 @@ const FileExplorer = () => {
                         <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={() => setOpenFolderModal(true)}/>
                         <ReactTooltip/>
                     </div>
+                    <div className='ml-2 py-2.5'>
+                        <ImBin2 size='17px' data-tip='Delete' onClick={handleDelete}/>
+                        <ReactTooltip/>
+                    </div>
                 </div>
             </div>
 
             {/*Render existing folder and files*/}
             {keys ?
                 keys.map((key) => (
-                    <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef}/>
-                )) : console.log()
+                    <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                )) : null
             }
 
             {rootFiles ?
                 rootFiles.map((file) => (
-                    <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef}/>
-                )) : console.log()
+                    <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                )) : null
             }
         </div>
 
