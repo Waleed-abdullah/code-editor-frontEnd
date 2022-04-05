@@ -43,7 +43,7 @@ const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
             <div className='mt-5 flex justify-between'>
                 <button 
                 type='submit' 
-                className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg'>Create</button>
+                className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg'>Rename</button>
                 <button 
                 type='button' 
                 className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg' 
