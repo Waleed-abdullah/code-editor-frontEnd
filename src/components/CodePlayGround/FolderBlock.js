@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {AiFillFolder} from 'react-icons/ai'
 import FileBlock from './FileBlock'
 
-const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelectedRef, selected}) => {
+const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelectedRef, selected, setOpenFile}) => {
     const [show, setShow] = useState(false)
     const seenFolder = {}
     const rootFiles = []
@@ -56,7 +56,7 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
 
         {show ?
             rootFiles.map((file) => (
-                <FileBlock key={path + '/' + file} name={file} counter={counter} path={path + '/' + file} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                <FileBlock key={path + '/' + file} name={file} counter={counter} path={path + '/' + file} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
             )) : null
         }
         

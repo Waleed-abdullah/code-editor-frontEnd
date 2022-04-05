@@ -48,6 +48,12 @@ const getProjectDir = async (userID, currProjectName) => {
     return res.data.result;
 }
 
+const getFileContent = async (userID, currProjectName, insidePath) => {
+    const url = baseURL + 'getContent/?userID=' + userID + '&currProjectDir=' + currProjectName + '&insidePath=' + insidePath
+    const res = await axios.get(url)
+    return res.data.data;
+}
+
 export {
     createUserFolder,
     createNewProject,
@@ -58,4 +64,5 @@ export {
     deleteFile,
     deleteFolder,
     getProjectDir,
+    getFileContent,
 }

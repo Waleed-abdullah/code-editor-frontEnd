@@ -19,7 +19,7 @@ import RenameModal from './RenameModal';
 
 Modal.setAppElement('#root')
 
-const FileExplorer = () => {
+const FileExplorer = ({setOpenFile}) => {
     const [folders, setFolders] = useState()
     const [rootFiles, setRootFiles] = useState()
     const [keys, setKeys] = useState()
@@ -44,7 +44,7 @@ const FileExplorer = () => {
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
-        console.log(res.seenFolder)
+        //console.log(res.seenFolder)
     }
 
   return (
@@ -78,13 +78,13 @@ const FileExplorer = () => {
             <div className='overflow-auto h-full pt-2 pb-2'>
                 {keys ?
                     keys.map((key) => (
-                        <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                        <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
                     )) : null
                 }
 
                 {rootFiles ?
                     rootFiles.map((file) => (
-                        <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                        <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
                     )) : null
                 }
             </div>
