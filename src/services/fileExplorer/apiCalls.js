@@ -27,9 +27,9 @@ const updateFile = async (code, userID, currProjectName, currFileName) => {
     await axios.post(url, {code, userID, currProjectName, currFileName})
 }
 
-const renameFile = async (userID, currFileName, newFileName, currProjectName) => {
+const renameFile = async (userID, currFileName, newFileName, insidePath, currProjectName) => {
     const url = baseURL + 'renameFile';
-    await axios.post(url, {userID, currFileName, currProjectName, newFileName})
+    await axios.post(url, {userID, currFileName, currProjectName, newFileName, insidePath})
 }
 
 const deleteFile = async (userID, insidePath, currProjectName) => {

@@ -3,6 +3,7 @@ import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal'
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import { ImBin2 } from 'react-icons/im'
+import { BiRename } from 'react-icons/bi'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
@@ -14,6 +15,7 @@ import { customStyles } from './folderModalStyles'
 import DeleteModal from './DeleteModal';
 
 import './FileExplorer.css'
+import RenameModal from './RenameModal';
 
 Modal.setAppElement('#root')
 
@@ -25,6 +27,7 @@ const FileExplorer = () => {
     const [openFolderModal, setOpenFolderModal] = useState(false)
     const [openFileModal, setOpenFileModal] = useState(false)
     const [openDeleteModal, setOpenDeleteModal] = useState(false)
+    const [openRenameModal, setOpenRenameModal] = useState(false)
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
@@ -62,6 +65,10 @@ const FileExplorer = () => {
                     </div>
                     <div className='ml-2 py-2.5'>
                         <ImBin2 size='17px' data-tip='Delete' onClick={() => setOpenDeleteModal(true)}/>
+                        <ReactTooltip/>
+                    </div>
+                    <div className='ml-2 py-2.5'>
+                        <BiRename size='19px' data-tip='Rename' onClick={() => setOpenRenameModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>
@@ -103,12 +110,18 @@ const FileExplorer = () => {
         contentLabel='Delete File/Folder'>
             <DeleteModal setOpenDeleteModal={setOpenDeleteModal} selected={selected} fetchData={fetchData}/>
         </Modal>
+
+        <Modal
+        isOpen={openRenameModal}
+        style={customStyles}
+        contentLabel='Rename File/Folder'>
+            <RenameModal setOpenRenameModal={setOpenRenameModal} selected={selected} fetchData={fetchData}/>
+        </Modal>
     </>
   )
 }
 
 export default FileExplorer
 
-// TODO: Add delete, rename, copy, drag-drop functionality
-// TODO: Remove scroll-bar
+// TODO: Add copy, drag-drop functionality
 // TODO: Add file icons
