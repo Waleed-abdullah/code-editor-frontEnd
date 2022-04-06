@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import FileExplorer from './FileExplorer'
 import MonacoEditor from './MonacoEditor'
 import Navbar from './Navbar'
+import Output from './Output'
 
 const PlayGround = () => {
   const [openFile, setOpenFile] = useState('')
+  const [saved, setSaved] = useState(false)
   return (
       <>
         <div className='text-white overflow-hidden' style={{backgroundColor: '#0e1525', height: '100vh'}}>
@@ -13,8 +15,8 @@ const PlayGround = () => {
 
             <div className='flex w-full h-full' style={{backgroundColor: '#0e1525'}}>
                 <FileExplorer setOpenFile={setOpenFile}/>
-                <MonacoEditor openFile={openFile}/>
-                <div className='bg-yellow-200' style={{width: '30%', height: '92%'}}>Output</div>
+                <MonacoEditor openFile={openFile} setSaved={setSaved} saved={saved}/>
+                <Output saved={saved}/>
             </div>
 
         </div>

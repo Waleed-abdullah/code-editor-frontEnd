@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Editor from '@monaco-editor/react';
 import { getFileContent, updateFile } from '../../services/fileExplorer/apiCalls';
 
-const MonacoEditor = ({openFile}) => {
+const MonacoEditor = ({openFile, setSaved, saved}) => {
     const [fileContent, setFileContent] = useState('')
     
     useEffect(() => {
@@ -14,11 +14,14 @@ const MonacoEditor = ({openFile}) => {
     const fetchContent = async () => {
         const data = await getFileContent('abd', 'TestDir', openFile)
         setFileContent(data)
+        setSaved(!saved)
     }
 
     const handleEditorChange = async (value, event) => {
-        if (event.changes[0].text === '\r\n'){
+        if (event.changes[0].text === '\r\n' || event.changes[0].text === ""){
+            console.log('Updating')
             await updateFile(value, 'abd', 'TestDir', openFile)
+            setSaved(!saved)
         }
     }
 
