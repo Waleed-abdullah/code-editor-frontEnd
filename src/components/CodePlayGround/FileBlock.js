@@ -10,7 +10,6 @@ const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile}) => {
   }
 
   const handleDoubleClick = () => {
-    console.log('Double Click', path)
     setOpenFile(path)
   }
 

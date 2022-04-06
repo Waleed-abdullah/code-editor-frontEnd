@@ -50,7 +50,7 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
 
         {show ?
             keys.map((key) => (
-                <FolderBlock key={path + '/' + key} name={key} folders={seenFolder[key]} counter={counter} path={path + '/' + key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected}/>
+                <FolderBlock key={path + '/' + key} name={key} folders={seenFolder[key]} counter={counter} path={path + '/' + key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
             )) : null
         }
 
