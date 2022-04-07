@@ -16,7 +16,7 @@ const PlayGround = () => {
             <div className='flex w-full h-full' style={{backgroundColor: '#0e1525'}}>
                 <FileExplorer setOpenFile={setOpenFile}/>
                 <MonacoEditor openFile={openFile} setSaved={setSaved} saved={saved}/>
-                <Output saved={saved}/>
+                <Output saved={saved} openFile={openFile}/>
             </div>
 
         </div>
