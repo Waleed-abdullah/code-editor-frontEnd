@@ -54,6 +54,21 @@ const getFileContent = async (userID, currProjectName, insidePath) => {
     return res.data.data;
 }
 
+const uploadFile = async (userID, currProjectName, insidePath, file) => {
+    const fileName = file.name
+    const url = baseURL + 'uploadAsset'
+    const fileForm = new FormData()
+
+    fileForm.append('file', file);
+    fileForm.append('fileName', file.name);
+
+    const res = await axios.post(url, fileForm)
+    console.log(res)
+    console.log("done")
+
+    await axios.post('/fileExplorer/move', {userID, currProjectName, insidePath, fileName})
+}
+
 export {
     createUserFolder,
     createNewProject,
@@ -65,4 +80,5 @@ export {
     deleteFolder,
     getProjectDir,
     getFileContent,
+    uploadFile,
 }

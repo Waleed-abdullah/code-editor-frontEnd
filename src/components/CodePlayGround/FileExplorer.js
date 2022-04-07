@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import {AiFillFolderAdd, AiFillFileAdd} from 'react-icons/ai'
 import { ImBin2 } from 'react-icons/im'
 import { BiRename } from 'react-icons/bi'
+import { BsUpload } from 'react-icons/bs'
 import FileBlock from './FileBlock';
 import FolderBlock from './FolderBlock';
 
@@ -16,6 +17,7 @@ import DeleteModal from './DeleteModal';
 
 import './FileExplorer.css'
 import RenameModal from './RenameModal';
+import UploadModal from './UploadModal';
 
 Modal.setAppElement('#root')
 
@@ -28,6 +30,7 @@ const FileExplorer = ({setOpenFile}) => {
     const [openFileModal, setOpenFileModal] = useState(false)
     const [openDeleteModal, setOpenDeleteModal] = useState(false)
     const [openRenameModal, setOpenRenameModal] = useState(false)
+    const [openUploadModal, setOpenUploadModal] = useState(false)
     
     const folderSelectedRef = useRef('/')
     const fileSelectedRef = useRef('')
@@ -69,6 +72,10 @@ const FileExplorer = ({setOpenFile}) => {
                     </div>
                     <div className='ml-2 py-2.5'>
                         <BiRename size='19px' data-tip='Rename' onClick={() => setOpenRenameModal(true)}/>
+                        <ReactTooltip/>
+                    </div>
+                    <div className='ml-2 py-2.5'>
+                        <BsUpload size='19px' data-tip='Upload' onClick={() => setOpenUploadModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>
@@ -117,6 +124,13 @@ const FileExplorer = ({setOpenFile}) => {
         contentLabel='Rename File/Folder'>
             <RenameModal setOpenRenameModal={setOpenRenameModal} selected={selected} fetchData={fetchData}/>
         </Modal>
+
+        <Modal
+        isOpen={openUploadModal}
+        style={customStyles}
+        contentLabel='Upload'>
+            <UploadModal setOpenUploadModal={setOpenUploadModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+        </Modal>
     </>
   )
 }
@@ -125,3 +139,4 @@ export default FileExplorer
 
 // TODO: Add copy, drag-drop functionality
 // TODO: Add file icons
+//await axios.post('/fileExplorer/move', {userID, currProjectName, insidePath, fileName})
