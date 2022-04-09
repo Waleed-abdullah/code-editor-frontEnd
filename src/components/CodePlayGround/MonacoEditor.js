@@ -72,6 +72,7 @@ const MonacoEditor = ({openFile, setSaved, saved}) => {
         defaultValue={fileContent}
         value={fileContent}
         theme='vs-dark'
+        onChange={handleEditorChange}
         />
     </div>
     </>
