@@ -136,7 +136,3 @@ const FileExplorer = ({setOpenFile}) => {
 }
 
 export default FileExplorer
-
-// TODO: Add copy, drag-drop functionality
-// TODO: Add file icons
-//await axios.post('/fileExplorer/move', {userID, currProjectName, insidePath, fileName})
