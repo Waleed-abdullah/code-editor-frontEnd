@@ -52,10 +52,10 @@ const FileExplorer = ({setOpenFile}) => {
 
   return (
     <>
-        <div className='p-2' style={{width: '20%', height: '92%', backgroundColor: '#1c2333'}}>
+        <div className='p-2' style={{width: '20%', height: '92%', backgroundColor: 'rgb(21,21,21,1)'}}>
             
             {/*Header*/}
-            <div className='flex justify-between sticky border-b-2'>
+            <div className='flex justify-between sticky' style={{borderBottomWidth: '2px', borderBottomColor: 'rgb(108, 199, 246)'}}>
                 <div className='ml-2 font-semibold text-2xl'>Files</div>
                 <div className='flex flex-row-reverse'>
                     <div className='ml-2 py-2'>

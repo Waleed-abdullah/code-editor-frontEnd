@@ -42,7 +42,7 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
     }
 
   return (
-      <div className='border-l-2 pl-4' style={{borderColor: 'rgb(255,255,255, 0.5)'}}>
+      <div className='border-l-2 pl-4' style={{borderColor: 'rgb(108, 199, 246)'}}>
         <button className='w-full flex hover:bg-slate-700 pb-0.5 pt-0.5 focus:bg-slate-700' onClick={handleClick}>
             <div className='py-1'><AiFillFolder/></div>
             <div className='pl-1'>{name}</div>
