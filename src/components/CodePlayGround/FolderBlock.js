@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {AiFillFolder} from 'react-icons/ai'
+import {AiFillFolder, AiFillFolderOpen } from 'react-icons/ai'
 import FileBlock from './FileBlock'
 
 const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelectedRef, selected, setOpenFile}) => {
@@ -44,7 +44,7 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
   return (
       <div className='border-l-2 pl-4' style={{borderColor: 'rgb(108, 199, 246)'}}>
         <button className='w-full flex hover:bg-slate-700 pb-0.5 pt-0.5 focus:bg-slate-700' onClick={handleClick}>
-            <div className='py-1'><AiFillFolder/></div>
+            {!show ? <div className='py-1 ml-1 mr-0.5' style={{color: 'rgb(100, 210, 255)'}}><AiFillFolder/></div> : <div className='py-1 ml-1 mr-0.5' style={{color: 'rgb(100, 210, 255)'}}><AiFillFolderOpen/></div>}
             <div className='pl-1'>{name}</div>
         </button>
 
