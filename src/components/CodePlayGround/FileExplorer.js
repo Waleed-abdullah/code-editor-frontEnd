@@ -52,7 +52,7 @@ const FileExplorer = ({setOpenFile}) => {
 
   return (
     <>
-        <div className='p-2' style={{width: '20%', height: '92%', backgroundColor: 'rgb(21,21,21,1)'}}>
+        <div className='p-2' style={{width: '20%', backgroundColor: 'rgb(21,21,21,1)'}}>
             
             {/*Header*/}
             <div className='flex justify-between sticky' style={{borderBottomWidth: '2px', borderBottomColor: 'rgb(108, 199, 246)'}}>
@@ -82,7 +82,7 @@ const FileExplorer = ({setOpenFile}) => {
             </div>
 
             {/*Render existing folder and files*/}
-            <div className='overflow-auto h-full pt-2 pb-2'>
+            <div className='overflow-auto h-full pt-2 pb-2' style={{height:'85%'}}>
                 {keys ?
                     keys.map((key) => (
                         <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
