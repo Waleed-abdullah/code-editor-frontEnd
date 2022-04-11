@@ -16,8 +16,8 @@ const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile}) => {
   }
 
   return (
-    <div className='pl-4 border-l-2 w-full' style={{borderColor: 'rgb(108, 199, 246)'}}>
-        <button className='w-full flex hover:bg-slate-700 focus:bg-slate-700 pb-1 pt-0.5' onClick={handleClick} onDoubleClick={handleDoubleClick}>
+    <div className='pl-2 border-l-2 w-full' style={{borderColor: 'rgb(108, 199, 246)'}}>
+        <button className='w-full flex justify-start hover:bg-slate-800 focus:bg-slate-700 pb-1 pt-0.5' onClick={handleClick} onDoubleClick={handleDoubleClick}>
           {icons[fileExtension] ?<div> <Markup content={icons[fileExtension]}/> </div> : <div className='ml-1 pt-1 mr-0.5'><AiFillFile/></div>}
           <div className='pl-1'>{name}</div>
         </button>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Editor, {useMonaco} from '@monaco-editor/react';
 import { getFileContent, updateFile } from '../../services/fileExplorer/apiCalls';
+import { icons } from '../../icons/icons';
+import { Markup } from 'interweave';
 //import themelist from "monaco-themes/themes/themelist.json";
 
 // const themes = Object.entries(themelist).map(([key, theme]) => {
@@ -8,6 +10,7 @@ import { getFileContent, updateFile } from '../../services/fileExplorer/apiCalls
 // });
 
 const MonacoEditor = ({openFile, setSaved, saved}) => {
+    const fileExtension = openFile.split('/')[openFile.split('/').length-1].split('.')[openFile.split('/')[openFile.split('/').length-1].split('.').length-1]
     //const [theme, setTheme] = useState('vs-dark')
     const [fileContent, setFileContent] = useState('')
     //const monaco = useMonaco()
@@ -57,13 +60,17 @@ const MonacoEditor = ({openFile, setSaved, saved}) => {
     <>
     <div style={{width: '50%', height: '92%'}}>
         <div className='w-full' style={{backgroundColor: 'rgb(21,21,21,1)'}}>
-            <div className='pl-2 pt-1 pb-1 w-1/5 font-i' 
+            <div className='pl-3 pr-3 pt-1 pb-1 flex justify-start w-max' 
             style={{
             borderBottomColor: 'rgb(108, 199, 246)', borderWidth: '1px', 
             borderLeftColor: 'rgb(52, 52, 52)', borderRightColor: 'rgb(52, 52, 52)', 
             borderTopColor: 'rgb(52, 52, 52)'
             }}>
-            <i>{openFile.split('/')[openFile.split('/').length-1]}</i></div>
+            
+            {icons[fileExtension] ? <div className='pt-0.5'> <Markup content={icons[fileExtension]}/> </div> : null}
+            <div className=''><i>{openFile.split('/')[openFile.split('/').length-1]}</i></div>
+            
+            </div>
         </div>
 
         <Editor
