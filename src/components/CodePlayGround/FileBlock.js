@@ -20,7 +20,7 @@ const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile}) => {
   const [show, setShow] = useState(false)
 
   const handleDoubleClick = () => {
-    if (fileExtension !== 'jpg' && fileExtension !== 'png' && fileExtension !== 'gif'){
+    if (fileExtension !== 'jpg' && fileExtension !== 'jpeg' &&  fileExtension !== 'png' && fileExtension !== 'gif'){
       setOpenFile(path)
     }
     else{
