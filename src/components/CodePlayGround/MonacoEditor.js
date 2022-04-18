@@ -1,46 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import Editor, {useMonaco} from '@monaco-editor/react';
+import Editor from '@monaco-editor/react';
 import { getFileContent, updateFile } from '../../services/fileExplorer/apiCalls';
 import { icons } from '../../icons/icons';
 import { Markup } from 'interweave';
-//import themelist from "monaco-themes/themes/themelist.json";
-
-// const themes = Object.entries(themelist).map(([key, theme]) => {
-//     return { label: theme, value: key };
-// });
 
 const MonacoEditor = ({openFile, setSaved, saved}) => {
     const fileExtension = openFile.split('/')[openFile.split('/').length-1].split('.')[openFile.split('/')[openFile.split('/').length-1].split('.').length-1]
-    //const [theme, setTheme] = useState('vs-dark')
     const [fileContent, setFileContent] = useState('')
-    //const monaco = useMonaco()
 
     useEffect(() => {
         if (openFile !== ''){
             fetchContent() 
         }
     }, [openFile])
-
-    // useEffect(() => {
-    //     if (!monaco) return;
-    
-    //     const loadThemes = async () => {
-    //       for (const theme of themes) {
-    //         try {
-    //           const tmTheme = await import(
-    //             `monaco-themes/themes/${theme.label}.json`
-    //           );
-    //           monaco.editor.defineTheme(theme.value, tmTheme);
-    //         } catch (e) {
-    //           console.log("Error loading theme", theme.label);
-    //           console.log(e);
-    //         }
-    //       }
-    //     };
-    
-    //     loadThemes();
-    //     setTheme('monokai')
-    //   }, [monaco]);
 
     const fetchContent = async () => {
         const data = await getFileContent('abd', 'TestDir', openFile)

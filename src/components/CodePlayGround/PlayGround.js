@@ -9,11 +9,11 @@ const PlayGround = () => {
   const [saved, setSaved] = useState(false)
   return (
       <>
-        <div className='text-white overflow-hidden' style={{backgroundColor: '#0e1525', height: '100vh'}}>
+        <div className='text-white overflow-hidden' style={{height: '100vh'}}>
             
             <Navbar/>
 
-            <div className='flex w-full h-full' style={{backgroundColor: '#0e1525'}}>
+            <div className='flex w-full h-full'>
                 <FileExplorer setOpenFile={setOpenFile}/>
                 <MonacoEditor openFile={openFile} setSaved={setSaved} saved={saved}/>
                 <Output saved={saved} openFile={openFile}/>

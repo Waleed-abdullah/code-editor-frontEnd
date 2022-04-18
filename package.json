@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@convergencelabs/monaco-collab-ext": "^0.3.2",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
     "stylelint-config-recommended": "^7.0.0",
