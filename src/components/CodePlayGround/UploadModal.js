@@ -24,7 +24,7 @@ const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
     <h1 className='text-white text-2xl mt-4 font-bold'>Upload File</h1>
 
     <form onSubmit={handleUploadFileSubmit}>
-        <div className='w-full mt-6'>
+        <div className='w-full mt-6 text-white'>
             <label className='text-lg text-white' htmlFor='file'>File: </label><br></br>
             <input 
             className='mt-2 w-full rounded-lg h-8 pl-2' 

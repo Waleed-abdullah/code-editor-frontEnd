@@ -1,6 +1,6 @@
 export const customStyles = {
     overlay: {
-        backgroundColor: 'transperant',
+        backgroundColor: 'rgb(255,255,255,0.2)',
     },
     content: {
         position: 'fixed',
@@ -11,7 +11,7 @@ export const customStyles = {
         marginRight: 'auto',
         marginTop: 'auto',
         marginBottom: 'auto',
-        backgroundColor: '#1c2333',
+        backgroundColor: 'rgb(21,21,21,1)',
         borderRadius: '10px',
     },
 };
