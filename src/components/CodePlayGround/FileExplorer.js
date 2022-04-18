@@ -10,14 +10,14 @@ import FolderBlock from './FolderBlock';
 
 import { getProjectDir} from '../../services/fileExplorer/apiCalls';
 
-import FolderModal from './FolderModal';
-import FileModal from './FileModal';
+import FolderModal from './Modals/FolderModal';
+import FileModal from './Modals/FileModal';
 import { customStyles } from './folderModalStyles'
-import DeleteModal from './DeleteModal';
+import DeleteModal from './Modals/DeleteModal';
 
 import './FileExplorer.css'
-import RenameModal from './RenameModal';
-import UploadModal from './UploadModal';
+import RenameModal from './Modals/RenameModal';
+import UploadModal from './Modals/UploadModal';
 
 Modal.setAppElement('#root')
 

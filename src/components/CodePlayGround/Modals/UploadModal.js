@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { uploadFile } from '../../services/fileExplorer/apiCalls'
+import { uploadFile } from '../../../services/fileExplorer/apiCalls'
 
 const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
     const [file, setFile] = useState(null)
@@ -13,6 +13,10 @@ const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
 
     const handleUploadFileSubmit = async (event) => {
         event.preventDefault()
+        if (file === null){
+            alert('No file uploaded')
+            return
+        }
         await uploadFile('abd', 'TestDir', filePath, file)
         fetchData()
         setOpenUploadModal(false)

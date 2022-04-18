@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { createNewFolder } from '../../services/fileExplorer/apiCalls';
+import { createNewFolder } from '../../../services/fileExplorer/apiCalls';
 
 const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
     const [folderName, setFolderName] = useState('')
@@ -8,9 +8,16 @@ const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
 
     const handleNewFolderSubmit = async (event) => {
         event.preventDefault()
-        await createNewFolder('abd', folderPath, folderName, 'TestDir')
-        fetchData()
-        setOpenFolderModal(false)
+        if (folderName.includes("\\") || folderName.includes("/") || folderName.includes(":") || folderName.includes("*")
+        || folderName.includes("?")|| folderName.includes("\"")|| folderName.includes("<")|| folderName.includes(">")
+        || folderName.includes("|")) {
+            alert('Folder name invalid!!\nCannot contain characters: / \\ : * ? " < > |')
+        }
+        else{
+            await createNewFolder('abd', folderPath, folderName, 'TestDir')
+            fetchData()
+            setOpenFolderModal(false)
+        }
     }
 
   return (

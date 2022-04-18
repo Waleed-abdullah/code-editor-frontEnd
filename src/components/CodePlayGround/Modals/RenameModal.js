@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
-import { renameFile } from '../../services/fileExplorer/apiCalls'
+import { renameFile } from '../../../services/fileExplorer/apiCalls'
 
 const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
     const [newFileName, setNewFileName] = useState('')
     const oldFileName = selected.current.path.split("/")[selected.current.path.split("/").length-1] 
 
     const handleNewNameSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault() 
+        if (oldFileName === ""){
+            alert('No file/folder selected for renaming')
+            return;
+        }
+        if (newFileName.includes("\\") || newFileName.includes("/") || newFileName.includes(":") || newFileName.includes("*")
+        || newFileName.includes("?")|| newFileName.includes("\"")|| newFileName.includes("<")|| newFileName.includes(">")
+        || newFileName.includes("|")){
+            alert('New name contains: / \\ : * ? " < > |')
+            return;
+        }
         await renameFile('abd', oldFileName, newFileName, selected.current.path, 'TestDir')
         fetchData()
         setOpenRenameModal(false)
