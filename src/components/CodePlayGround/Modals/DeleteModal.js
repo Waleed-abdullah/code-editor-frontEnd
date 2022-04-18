@@ -1,18 +1,23 @@
 import React from 'react'
 import {ImWarning} from 'react-icons/im'
 
-import { deleteFile, deleteFolder } from '../../services/fileExplorer/apiCalls'
+import { deleteFile, deleteFolder } from '../../../services/fileExplorer/apiCalls'
 
 const DeleteModal = ({setOpenDeleteModal, selected, fetchData}) => {
     const handleDelete = async () => {
-        if (selected.current.flag === 'folder'){
-            await deleteFolder('abd', selected.current.path, 'TestDir')
+        if (selected.current.path !== ""){
+            if (selected.current.flag === 'folder'){
+                await deleteFolder('abd', selected.current.path, 'TestDir')
+            }
+            else{
+                await deleteFile('abd', selected.current.path, 'TestDir')
+            }
+            await fetchData()
+            setOpenDeleteModal(false)
         }
-        else{
-            await deleteFile('abd', selected.current.path, 'TestDir')
+        else {
+            alert('No file/folder selected to delete')
         }
-        await fetchData()
-        setOpenDeleteModal(false)
     }   
   return (
     <>

@@ -3,7 +3,7 @@ import {AiFillFile} from 'react-icons/ai'
 import { Markup } from 'interweave';
 import {icons} from '../../icons/icons.js'
 import Modal from 'react-modal'
-import ImageModal from './ImageModal.js';
+import ImageModal from './Modals/ImageModal.js';
 import { customStyles } from './folderModalStyles.js';
 
 const cS = JSON.parse(JSON.stringify(customStyles));

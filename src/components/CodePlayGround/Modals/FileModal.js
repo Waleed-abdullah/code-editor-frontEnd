@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createNewFile } from '../../services/fileExplorer/apiCalls'
+import { createNewFile } from '../../../services/fileExplorer/apiCalls'
 
 const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
     const [fileName, setFileName] = useState('')
@@ -7,9 +7,16 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
     
     const handleNewFileSubmit = async (event) => {
         event.preventDefault()
-        await createNewFile('abd', filePath, fileName, 'TestDir')
-        fetchData()
-        setOpenFileModal(false)
+        if (fileName.includes("\\") || fileName.includes("/") || fileName.includes(":") || fileName.includes("*")
+        || fileName.includes("?")|| fileName.includes("\"")|| fileName.includes("<")|| fileName.includes(">")
+        || fileName.includes("|")) {
+            alert('File name invalid!!\nCannot contain characters: / \\ : * ? " < > |')
+        }
+        else {
+            await createNewFile('abd', filePath, fileName, 'TestDir')
+            fetchData()
+            setOpenFileModal(false)
+        }
     }
 
   return (
