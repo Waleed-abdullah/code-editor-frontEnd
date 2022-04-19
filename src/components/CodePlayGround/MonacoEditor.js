@@ -30,7 +30,7 @@ const MonacoEditor = ({openFile, setSaved, saved}) => {
 
   return (
     <>
-    <div style={{width: '50%', height: '92%'}}>
+    <div style={{width: '52%', resize: 'horizontal', overflow: 'auto', maxWidth: '100%'}}>
         <div className='w-full' style={{backgroundColor: 'rgb(21,21,21,1)'}}>
             <div className='pl-3 pr-3 pt-1 pb-1 flex justify-start w-max' 
             style={{
@@ -46,7 +46,7 @@ const MonacoEditor = ({openFile, setSaved, saved}) => {
         </div>
 
         <Editor
-        height="100%"
+        height='100%'
         path={openFile}
         defaultValue={fileContent}
         value={fileContent}
