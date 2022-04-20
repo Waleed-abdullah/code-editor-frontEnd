@@ -10,7 +10,7 @@ const Output = ({saved, openFile}) => {
 
     return (
     <>
-        <iframe key={saved} id='output' className='bg-white' width="30%" height="92%" src={`http://localhost:5000/get/abd/TestDir` + src.current}></iframe>
+        <iframe title='output' style={{resize: 'horizontal', overflow: 'auto', direction: 'rtl', maxWidth: '100%', minWidth:'30%'}} key={saved} id='output' className='bg-white' src={`http://localhost:5000/get/abd/TestDir` + src.current}></iframe>
     </>
     )
 }
