@@ -1,7 +1,8 @@
-import './App.css';
-import MonacoEditor from './components/MonacoEditor';
+import React from 'react';
+import PlayGround from './components/CodePlayGround/PlayGround';
+//import Homepage from './components/Homepage/Homepage'
 
 function App() {
-  return <MonacoEditor />;
+  return <PlayGround />;
 }
 export default App;

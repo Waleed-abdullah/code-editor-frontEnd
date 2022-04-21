@@ -5,7 +5,7 @@ import SignUp from './SignUp'
 const Homepage = () => {
   return (
     <>
-    <div style = {{backgroundColor: "#0E1525", height: '100vh'}}>
+    <div style = {{backgroundColor: 'rgb(21,21,21,1)', height: '100vh'}}>
         {/*Sign up and Log in container*/}
         <div className='w-full flex md:flex-row-reverse md:justify-start justify-center relative top-8'>
             <SignUp/>

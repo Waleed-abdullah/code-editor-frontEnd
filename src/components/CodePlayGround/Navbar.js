@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar = () => {
   return (
     <>
-        <nav className='text-white px-2 py-3 border-b-2 sticky top-0' style={{backgroundColor: "#1c2333"}}>
+        <nav className='text-white px-2 py-3 sticky top-0' style={{borderBottomWidth: '1px', backgroundColor: 'rgb(21,21,21,1)', borderBottomColor: 'rgb(108, 199, 246)'}}>
             <div className='w-full flex justify-between'>
                 <div className='flex' style={{width: '70%'}}>
                     <div className='ml-4'>Title</div>
@@ -21,3 +21,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+// backgroundColor: "#1c2333"
