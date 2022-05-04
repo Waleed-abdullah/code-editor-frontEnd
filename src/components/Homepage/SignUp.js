@@ -1,18 +1,7 @@
 import React from 'react'
 import { auth, provider } from '../../firebase';
 
-const SignUp = () => {
-
-  const handleSignIn = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        const temp = result.user.multiFactor.user;
-        console.log(temp)
-      })
-      .catch((error) => console.log(error.message));
-  }
-
+const SignUp = ({handleSignIn}) => {
   return (
     <button style={{backgroundColor: "#0079F2"}} className='text-white 
     text-center w-28 rounded-xl 
