@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
+import { createUserFolder } from '../../services/fileExplorer/apiCalls';
 import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom';
 
@@ -12,14 +13,18 @@ const Homepage = ({user, setUser}) => {
     auth
     .signInWithPopup(provider)
     .then(async (result) => {
-      // check if the user already exists in database
       const loggedInUser = {
         name: result.user.multiFactor.user.displayName,
-        email: result.user.multiFactor.user.email
+        email: result.user.multiFactor.user.email,
+        photoURL: result.user.multiFactor.user.photoURL
       }
       const resUser = await createUser(loggedInUser)
-      setUser(resUser)
-      if (resUser){history.push(`/dashboard/${resUser.name}`)}
+
+      if (resUser.savedUser){
+        if(!resUser.userExisted) {createUserFolder(resUser.savedUser.id)} 
+        setUser(resUser.savedUser)
+        history.push(`/dashboard/${resUser.savedUser.name}`)
+      }
     })
     .catch((error) => console.log(error.message));
   }

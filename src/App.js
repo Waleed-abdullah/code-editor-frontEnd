@@ -9,7 +9,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path='/dashboard/:username?'>
-          {user ? <Dashboard/> : <Redirect to='/'/>}
+          {user ? <Dashboard user={user} setUser={setUser}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  
