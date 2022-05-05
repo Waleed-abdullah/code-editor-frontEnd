@@ -1,12 +1,21 @@
-import React from "react";
-//import PlayGround from "./components/CodePlayGround/PlayGround";
-import Homepage from './components/Homepage/Homepage'
+import React, { useState } from "react";
+import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import Dashboard from "./components/Dashboard/Dashboard.js";
+import Homepage from './components/Homepage/Homepage.js'
 
 const App = () => {
+  const [user, setUser] = useState(null)
   return(
-    <div>
-      <Homepage/>
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/dashboard/:username?'>
+          {user ? <Dashboard/> : <Redirect to='/'/>}
+        </Route>
+        <Route path='/'>
+          <Homepage user={user} setUser={setUser}/>  
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 

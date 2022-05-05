@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
+import { Helmet } from 'react-helmet'
+import { useHistory } from 'react-router-dom';
 
-const Homepage = () => {
-  const [user, setUser] = useState(null)
+const Homepage = ({user, setUser}) => {
+  let history = useHistory()
 
   const handleSignIn = () => {
     auth
@@ -15,14 +17,19 @@ const Homepage = () => {
         name: result.user.multiFactor.user.displayName,
         email: result.user.multiFactor.user.email
       }
-      await createUser(loggedInUser)    
+      const resUser = await createUser(loggedInUser)
+      setUser(resUser)
+      if (resUser){history.push(`/dashboard/${resUser.name}`)}
     })
     .catch((error) => console.log(error.message));
   }
 
   return (
     <>
-    <div style = {{backgroundColor: 'rgb(21,21,21,1)', height: '100vh'}}>
+    <Helmet>
+      <style>{'body { background-color: rgb(21,21,21,1); }'}</style>
+    </Helmet>
+    <div>
         {/*Sign up and Log in container*/}
         <div className='w-full flex md:flex-row-reverse md:justify-start justify-center relative top-8'>
             <SignUp handleSignIn={handleSignIn}/>
