@@ -8,7 +8,7 @@ const App = () => {
   return(
     <Router>
       <Switch>
-        <Route path='/dashboard/:username?'>
+        <Route path='/dashboard/:username'>
           {user ? <Dashboard user={user} setUser={setUser}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
