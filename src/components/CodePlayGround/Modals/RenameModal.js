@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { renameFile } from '../../../services/fileExplorer/apiCalls'
 
-const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
+const RenameModal = ({setOpenRenameModal, selected, fetchData, user, currentProject}) => {
     const [newFileName, setNewFileName] = useState('')
     const oldFileName = selected.current.path.split("/")[selected.current.path.split("/").length-1] 
 
@@ -17,7 +17,7 @@ const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
             alert('New name contains: / \\ : * ? " < > |')
             return;
         }
-        await renameFile('abd', oldFileName, newFileName, selected.current.path, 'TestDir')
+        await renameFile(user.id, oldFileName, newFileName, selected.current.path, currentProject)
         fetchData()
         setOpenRenameModal(false)
     }

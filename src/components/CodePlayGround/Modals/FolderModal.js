@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import { createNewFolder } from '../../../services/fileExplorer/apiCalls';
 
-const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
+const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData, user, currentProject}) => {
     const [folderName, setFolderName] = useState('')
     const [folderPath, setFolderPath] = useState(folderSelectedRef.current)
 
@@ -14,7 +14,7 @@ const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
             alert('Folder name invalid!!\nCannot contain characters: / \\ : * ? " < > |')
         }
         else{
-            await createNewFolder('abd', folderPath, folderName, 'TestDir')
+            await createNewFolder(user.id, folderPath, folderName, currentProject)
             fetchData()
             setOpenFolderModal(false)
         }

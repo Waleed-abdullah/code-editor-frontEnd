@@ -9,7 +9,7 @@ const cS = JSON.parse(JSON.stringify(customStyles));
 cS.content.width = '30%'
 cS.content.height = '65%'
 
-const Dashboard = ({user, setUser}) => {
+const Dashboard = ({user, setUser, setCurrentProject}) => {
   const [openNewProjectModal, setOpenNewProjectModal] = useState(false)
   return (
       <>
@@ -20,7 +20,7 @@ const Dashboard = ({user, setUser}) => {
         style={cS}
         contentLabel='New Project'
         >
-          <NewProjectModal setOpenNewProjectModal={setOpenNewProjectModal} user={user} setUser={setUser}/>
+          <NewProjectModal setOpenNewProjectModal={setOpenNewProjectModal} user={user} setUser={setUser} setCurrentProject={setCurrentProject}/>
         </Modal>
       </>
   )

@@ -10,7 +10,7 @@ const cS = JSON.parse(JSON.stringify(customStyles));
 cS.content.width = '50%'
 cS.content.height = '80%'
 
-const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile}) => {
+const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile, user, currentProject}) => {
   const fileExtension = path.split('/')[path.split('/').length-1].split('.')[path.split('/')[path.split('/').length-1].split('.').length-1]
   const handleClick = () => {
     fileSelectedRef.current = path
@@ -41,7 +41,7 @@ const FileBlock = ({name, path, fileSelectedRef, selected, setOpenFile}) => {
     isOpen={show}
     style={cS}
     contentLabel='Image'>
-      <ImageModal setShow={setShow} path={path}/>
+      <ImageModal setShow={setShow} path={path} user={user} currentProject={currentProject}/>
     </Modal>
     </>
   )

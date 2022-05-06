@@ -3,14 +3,14 @@ import {ImWarning} from 'react-icons/im'
 
 import { deleteFile, deleteFolder } from '../../../services/fileExplorer/apiCalls'
 
-const DeleteModal = ({setOpenDeleteModal, selected, fetchData}) => {
+const DeleteModal = ({setOpenDeleteModal, selected, fetchData, user, currentProject}) => {
     const handleDelete = async () => {
         if (selected.current.path !== ""){
             if (selected.current.flag === 'folder'){
-                await deleteFolder('abd', selected.current.path, 'TestDir')
+                await deleteFolder(user.id, selected.current.path, currentProject)
             }
             else{
-                await deleteFile('abd', selected.current.path, 'TestDir')
+                await deleteFile(user.id, selected.current.path, currentProject)
             }
             await fetchData()
             setOpenDeleteModal(false)

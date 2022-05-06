@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createNewFile } from '../../../services/fileExplorer/apiCalls'
 
-const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
+const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData, user, currentProject}) => {
     const [fileName, setFileName] = useState('')
     const [filePath, setFilePath] = useState(folderSelectedRef.current)
     
@@ -13,7 +13,7 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
             alert('File name invalid!!\nCannot contain characters: / \\ : * ? " < > |')
         }
         else {
-            await createNewFile('abd', filePath, fileName, 'TestDir')
+            await createNewFile(user.id, filePath, fileName, currentProject)
             fetchData()
             setOpenFileModal(false)
         }

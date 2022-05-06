@@ -1,8 +1,24 @@
 import React, { useState } from 'react'
-import { createNewProject } from '../../../services/fileExplorer/apiCalls'
+import { createNewFile, createNewProject, updateFile } from '../../../services/fileExplorer/apiCalls'
 import { updateUserProjectsList } from '../../../services/user/apiCalls'
+import { useHistory } from 'react-router-dom';
 
-const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
+const code = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>`
+
+const NewProjectModal = ({setOpenNewProjectModal, user, setUser, setCurrentProject}) => {
+  let history = useHistory()
   const [projectInfo, setProjectInfo] = useState({name: '', description: ''})
   
   const handleNewProjectSubmit = async (event) => {
@@ -15,8 +31,12 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
     else{
       const res = await updateUserProjectsList(user.id, projectInfo)
       setUser(res.updatedUser)
-      createNewProject(user.id, res.dirName)
+      await createNewProject(user.id, res.dirName)
+      await createNewFile(user.id, '/', 'index.html', res.dirName)
+      await updateFile(code, user.id, res.dirName, '/index.html')
       setOpenNewProjectModal(false)
+      setCurrentProject(res.dirName)
+      history.push(`/editor/${res.dirName}`)
     }
   }
 
