@@ -8,6 +8,14 @@ const createUser = async (user) => {
     return resUser.data
 }
 
+const updateUserProjectsList = async (id, projectInfo) => {
+    const url = baseURL + 'createProject'
+    const resUser = await axios.post(url, {id, projectInfo})
+    console.log(resUser)
+    return resUser.data
+}
+
 export {
     createUser,
+    updateUserProjectsList,
 }

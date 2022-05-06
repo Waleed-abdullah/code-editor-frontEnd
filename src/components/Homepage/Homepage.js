@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
@@ -19,7 +19,7 @@ const Homepage = ({user, setUser}) => {
         photoURL: result.user.multiFactor.user.photoURL
       }
       const resUser = await createUser(loggedInUser)
-
+      
       if (resUser.savedUser){
         if(!resUser.userExisted) {createUserFolder(resUser.savedUser.id)} 
         setUser(resUser.savedUser)

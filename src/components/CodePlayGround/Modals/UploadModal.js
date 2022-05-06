@@ -46,7 +46,8 @@ const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
             id='filePath' 
             type='text' 
             name='filePath' 
-            placeholder='Enter Path' 
+            placeholder='Enter Path'
+            required
             onChange={(event) => setFilePath(event.target.value)}></input>
         </div>
 

@@ -5,7 +5,7 @@ import { IoMdNotifications } from 'react-icons/io'
 import { CgMathPlus } from 'react-icons/cg'
 // import { MdNotificationsActive } from 'react-icons/md'
 
-const Navbar = ({user, setUser}) => {
+const Navbar = ({user, setOpenNewProjectModal}) => {
   return (
     <>
         <Helmet>
@@ -17,7 +17,7 @@ const Navbar = ({user, setUser}) => {
                 
                 <div className='flex' style={{width: '30%'}}>
                     <div className='ml-4'>
-                        <img className='rounded-full w-8 h-8' src={user.photoURL}/>
+                        <img className='rounded-full w-8 h-8' alt='profilePic' src={user.photoURL}/>
                     </div>
                     <div className='ml-3 mt-2'>{user.name}</div>
                 </div>
@@ -27,7 +27,7 @@ const Navbar = ({user, setUser}) => {
                 </div>
 
                 <div className='flex flex-row-reverse' style={{width: "30%"}}>
-                    <div className='mr-4 mt-2'><CgMathPlus data-tip='New Project' color='white' size='25px'/></div>
+                    <div className='mr-4 mt-2'><CgMathPlus data-tip='New Project' color='white' size='25px' onClick={() => setOpenNewProjectModal(true)}/></div>
                     <ReactTooltip/>
                     <div className='mr-4 mt-2'><IoMdNotifications data-tip='Notifications' color='white' size='25px'/></div>
                     <ReactTooltip/>

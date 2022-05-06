@@ -1,6 +1,6 @@
 export const customStyles = {
     overlay: {
-        backgroundColor: 'rgb(255,255,255,0.2)',
+        backgroundColor: 'rgb(0,0,0,0.5)',
     },
     content: {
         position: 'fixed',

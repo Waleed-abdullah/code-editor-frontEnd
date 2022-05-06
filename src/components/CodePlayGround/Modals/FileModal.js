@@ -30,7 +30,8 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
                 className='mt-2 w-full rounded-lg h-8 pl-2' 
                 id='fileName' 
                 type='text' 
-                name='fileName'  
+                name='fileName'
+                required
                 onChange={(event) => setFileName(event.target.value)}></input>
             </div>
 
@@ -42,7 +43,8 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
                 id='filePath' 
                 type='text' 
                 name='filePath' 
-                placeholder='Enter Path' 
+                placeholder='Enter Path'
+                required 
                 onChange={(event) => setFilePath(event.target.value)}></input>
             </div>
 

@@ -34,7 +34,7 @@ const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
                 className='mt-2 w-full rounded-lg h-8 pl-2' 
                 id='oldFileName' 
                 type='text' 
-                name='oldFileName' 
+                name='oldFileName'
                 disabled></input>
             </div>
 
@@ -46,7 +46,8 @@ const RenameModal = ({setOpenRenameModal, selected, fetchData}) => {
                 id='newFileName' 
                 type='text' 
                 name='newFileName' 
-                placeholder='Enter New File Name' 
+                placeholder='Enter New File Name'
+                required 
                 onChange={(event) => setNewFileName(event.target.value)}></input>
             </div>
 

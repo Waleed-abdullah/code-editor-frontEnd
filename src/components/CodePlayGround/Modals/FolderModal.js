@@ -31,7 +31,8 @@ const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
                 className='mt-2 w-full rounded-lg h-8 pl-2' 
                 id='folderName' 
                 type='text' 
-                name='folderName'  
+                name='folderName'
+                required
                 onChange={(event) => setFolderName(event.target.value)}></input>
             </div>
 
@@ -43,7 +44,8 @@ const FolderModal = ({setOpenFolderModal, folderSelectedRef, fetchData}) => {
                 id='folderPath' 
                 type='text' 
                 name='folderPath' 
-                placeholder='Enter Path' 
+                placeholder='Enter Path'
+                required 
                 onChange={(event) => setFolderPath(event.target.value)}></input>
             </div>
 
