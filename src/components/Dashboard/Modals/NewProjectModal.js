@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { code } from './hmtlBoilerplate';
 
 
-const NewProjectModal = ({setOpenNewProjectModal, user, setUser, setCurrentProject}) => {
+const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
   let history = useHistory()
   const [projectInfo, setProjectInfo] = useState({name: '', description: ''})
   
@@ -18,12 +18,12 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser, setCurrentProje
     }
     else{
       const res = await updateUserProjectsList(user.id, projectInfo)
+      res.updatedUser.projects.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
       setUser(res.updatedUser)
       await createNewProject(user.id, res.dirName)
       await createNewFile(user.id, '/', 'index.html', res.dirName)
       await updateFile(code, user.id, res.dirName, '/index.html')
       setOpenNewProjectModal(false)
-      setCurrentProject(res.dirName)
       history.push(`/editor/${res.dirName}`)
     }
   }

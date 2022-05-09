@@ -6,16 +6,16 @@ import Homepage from './components/Homepage/Homepage.js'
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [currentProject, setCurrentProject] = useState('')
+  //const [currentProject, setCurrentProject] = useState('')
 
   return(
     <Router>
       <Switch>
         <Route path='/dashboard/:username'>
-          {user ? <Dashboard user={user} setUser={setUser} setCurrentProject={setCurrentProject}/> : <Redirect to='/'/>}
+          {user ? <Dashboard user={user} setUser={setUser}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/editor/:projectName'>
-          {user ? <PlayGround user={user} currentProject={currentProject}/> : <Redirect to='/'/>}
+          {user ? <PlayGround user={user}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  

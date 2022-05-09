@@ -13,7 +13,7 @@ const Navbar = ({user, setOpenNewProjectModal}) => {
         </Helmet>
 
         <nav className='text-white px-2 py-3 sticky top-0' style={{borderBottomWidth: '1px', backgroundColor: 'rgb(21,21,21,1)', borderBottomColor: 'rgb(108, 199, 246)'}}>
-            <div className='w-full flex justify-between'>
+            <div className='w-full flex justify-center'>
                 
                 <div className='flex' style={{width: '30%'}}>
                     <div className='ml-4'>
@@ -23,7 +23,7 @@ const Navbar = ({user, setOpenNewProjectModal}) => {
                 </div>
 
                 <div className='mt-0.5' style={{width: '40%'}}>
-                    <input className='w-full rounded-md pl-2 text-black py-1' type='text' placeholder='Search Users'/>
+                    <input className='w-full rounded-md pl-2 text-black py-1' type='text' placeholder='Search users'/>
                 </div>
 
                 <div className='flex flex-row-reverse' style={{width: "30%"}}>

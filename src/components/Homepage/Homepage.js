@@ -21,6 +21,7 @@ const Homepage = ({user, setUser}) => {
       const resUser = await createUser(loggedInUser)
       
       if (resUser.savedUser){
+        resUser.savedUser.projects.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
         if(!resUser.userExisted) {createUserFolder(resUser.savedUser.id)} 
         setUser(resUser.savedUser)
         history.push(`/dashboard/${resUser.savedUser.name}`)

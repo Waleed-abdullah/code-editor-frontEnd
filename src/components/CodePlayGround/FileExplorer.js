@@ -47,7 +47,6 @@ const FileExplorer = ({setOpenFile, user, currentProject}) => {
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
-        //console.log(res.seenFolder)
     }
 
   return (
