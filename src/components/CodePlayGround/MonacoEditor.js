@@ -3,7 +3,7 @@ import Editor from '@monaco-editor/react';
 import { getFileContent, updateFile } from '../../services/fileExplorer/apiCalls';
 import { icons } from '../../icons/icons';
 import { Markup } from 'interweave';
-import { emmetHTML, emmetCSS } from "emmet-monaco-es";
+import { emmetHTML, emmetCSS, emmetJSX } from "emmet-monaco-es";
 
 const MonacoEditor = ({openFile, setSaved, saved, user, currentProject}) => {
     const fileExtension = openFile.split('/')[openFile.split('/').length-1].split('.')[openFile.split('/')[openFile.split('/').length-1].split('.').length-1]
@@ -31,6 +31,7 @@ const MonacoEditor = ({openFile, setSaved, saved, user, currentProject}) => {
     const handleOnMount = () => {
         emmetCSS(window.monaco)
         emmetHTML(window.monaco)
+        emmetJSX(window.monaco)
     }
 
   return (

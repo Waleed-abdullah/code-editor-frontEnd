@@ -6,7 +6,6 @@ import Homepage from './components/Homepage/Homepage.js'
 
 const App = () => {
   const [user, setUser] = useState(null)
-  //const [currentProject, setCurrentProject] = useState('')
 
   return(
     <Router>
