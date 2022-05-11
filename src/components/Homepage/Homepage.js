@@ -2,7 +2,7 @@ import React from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
-import { createUserFolder } from '../../services/fileExplorer/apiCalls';
+import { createProjectsFolder, createSnippetsFolder, createUserFolder } from '../../services/fileExplorer/apiCalls';
 import { Helmet } from 'react-helmet'
 import { useHistory } from 'react-router-dom';
 
@@ -22,7 +22,11 @@ const Homepage = ({user, setUser}) => {
       
       if (resUser.savedUser){
         resUser.savedUser.projects.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
-        if(!resUser.userExisted) {createUserFolder(resUser.savedUser.id)} 
+        if(!resUser.userExisted) {
+          createUserFolder(resUser.savedUser.id)
+          createProjectsFolder(resUser.savedUser.id)
+          createSnippetsFolder(resUser.savedUser.id)
+        } 
         setUser(resUser.savedUser)
         history.push(`/dashboard/${resUser.savedUser.name}`)
       }

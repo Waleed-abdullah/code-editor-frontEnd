@@ -7,9 +7,19 @@ const createUserFolder = async (userID) => {
     await axios.post(url, {userID});
 }
 
-const createNewProject = async (userID, dirName) => {
+const createProjectsFolder = async (userID) => {
+    const url = baseURL + 'createProjectsFolder';
+    await axios.post(url, {userID})
+}
+
+const createSnippetsFolder = async (userID) => {
+    const url = baseURL + 'createSnippetsFolder';
+    await axios.post(url, {userID})
+}
+
+const createNewProject = async (userID, dirName, type) => {
     const url = baseURL + 'createProjectDir';
-    await axios.post(url, {userID, dirName})
+    await axios.post(url, {userID, dirName, type})
 }
 
 const createNewFolder = async (userID, insidePath, folderName, currProjectName) => {
@@ -20,6 +30,11 @@ const createNewFolder = async (userID, insidePath, folderName, currProjectName) 
 const createNewFile = async (userID, insidePath, fileName, currProjectName) => {
     const url = baseURL + 'createFile';
     await axios.post(url, {userID, insidePath, fileName, currProjectName})
+}
+
+const createSnippetFile = async (userID, fileName, currProjectName) => {
+    const url = baseURL + 'createSnippetFile'
+    await axios.post(url, {userID, fileName, currProjectName})
 }
 
 const updateFile = async (code, userID, currProjectName, insidePath) => {
@@ -81,4 +96,7 @@ export {
     getProjectDir,
     getFileContent,
     uploadFile,
+    createProjectsFolder,
+    createSnippetsFolder,
+    createSnippetFile,
 }

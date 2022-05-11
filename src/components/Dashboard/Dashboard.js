@@ -8,7 +8,7 @@ import NewProjectModal from './Modals/NewProjectModal';
 Modal.setAppElement('#root')
 const cS = JSON.parse(JSON.stringify(customStyles));
 cS.content.width = '30%'
-cS.content.height = '65%'
+cS.content.height = '79%'
 
 const Dashboard = ({user, setUser}) => {
   const [openNewProjectModal, setOpenNewProjectModal] = useState(false)

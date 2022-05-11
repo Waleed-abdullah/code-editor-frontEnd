@@ -11,7 +11,7 @@ const Output = ({saved, openFile, user, currentProject}) => {
 
     return (
     <>
-        <iframe title='output' style={{resize: 'horizontal', overflow: 'auto', direction: 'rtl', maxWidth: '100%', minWidth:'30%'}} key={saved} id='output' className='bg-white' src={`http://localhost:5000/get/${user.id}/${currentProject}` + src.current}></iframe>
+        <iframe title='output' style={{resize: 'horizontal', overflow: 'auto', direction: 'rtl', maxWidth: '100%', minWidth:'30%'}} key={saved} id='output' className='bg-white' src={`http://localhost:5000/get/${user.id}/projects/${currentProject}` + src.current}></iframe>
     </>
     )
 }
