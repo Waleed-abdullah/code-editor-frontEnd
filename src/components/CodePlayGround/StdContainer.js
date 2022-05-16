@@ -1,9 +1,7 @@
-import { click } from '@testing-library/user-event/dist/click'
 import React, { useState } from 'react'
 import Stderr from './Stderr'
 import Stdin from './Stdin'
 import Stdout from './Stdout'
-import axios from 'axios'
 import { runCode } from '../../services/runCode/apiCalls'
 
 const StdContainer = ({language, fileContent}) => {
