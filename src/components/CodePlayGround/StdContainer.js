@@ -7,13 +7,15 @@ import axios from 'axios'
 import { runCode } from '../../services/runCode/apiCalls'
 
 const StdContainer = ({language, fileContent}) => {
-    console.log(fileContent)
     const [stdin, setStdin] = useState('')
+    const [stdout, setStdout] = useState('')
+    const [stderr, setStderr] = useState('')
     const [clicked, setClicked] = useState([true, false, false])
 
     const handleRunClick = async () => {
         const {stdout, stderr, error} = await runCode(fileContent, language, stdin)
-        console.log(stdout, stderr, error)
+        setStdout(stdout)
+        setStderr(stderr)
     }
 
     return (
@@ -28,7 +30,7 @@ const StdContainer = ({language, fileContent}) => {
                 onClick={handleRunClick}>Run</button>
             </div>
 
-            {clicked[0] ? <Stdin stdin={stdin} setStdin={setStdin}/> : clicked[1] ? <Stdout/> : <Stderr/>}
+            {clicked[0] ? <Stdin stdin={stdin} setStdin={setStdin}/> : clicked[1] ? <Stdout stdout={stdout}/> : <Stderr stderr={stderr}/>}
         </>
     )
 }
