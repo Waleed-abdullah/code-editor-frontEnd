@@ -17,7 +17,7 @@ const App = () => {
         <Route path='/editor/projects/:projectName'>
           {user ? <PlayGround user={user}/> : <Redirect to='/'/>}
         </Route>
-        <Route path='/editor/snippets/:snippetName'>
+        <Route path='/editor/snippets/:snippetName/:language'>
           {user ? <SnippetPlayground user={user}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>

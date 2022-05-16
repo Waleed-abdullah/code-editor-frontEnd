@@ -42,6 +42,11 @@ const updateFile = async (code, userID, currProjectName, insidePath) => {
     await axios.post(url, {code, userID, currProjectName, insidePath})
 }
 
+const updateSnippet = async (code, userID, currentSnippetName, language) => {
+    const url = baseURL + 'updateSnippet'
+    await axios.post(url, {code, userID, currentSnippetName, language})
+}
+
 const renameFile = async (userID, currFileName, newFileName, insidePath, currProjectName) => {
     const url = baseURL + 'renameFile';
     await axios.post(url, {userID, currFileName, currProjectName, newFileName, insidePath})
@@ -68,6 +73,13 @@ const getFileContent = async (userID, currProjectName, insidePath) => {
     const res = await axios.get(url)
     return res.data.data;
 }
+
+const getSnippetContent = async (userID, currentSnippetName, language) => {
+    const url = baseURL + 'getSnippetContent?userID=' + userID + '&currentSnippetName=' + currentSnippetName + '&language=' + language
+    const res = await axios.get(url)
+    return res.data.data
+}
+
 
 const uploadFile = async (userID, currProjectName, insidePath, file) => {
     const fileName = file.name
@@ -99,4 +111,6 @@ export {
     createProjectsFolder,
     createSnippetsFolder,
     createSnippetFile,
+    getSnippetContent,
+    updateSnippet,
 }
