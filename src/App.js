@@ -4,6 +4,7 @@ import PlayGround from "./components/CodePlayGround/PlayGround.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import Homepage from './components/Homepage/Homepage.js'
 import SnippetPlayground from "./components/CodePlayGround/SnippetPlayground.js";
+import User from "./components/UserProfile/User.js";
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -19,6 +20,9 @@ const App = () => {
         </Route>
         <Route path='/editor/snippets/:snippetName/:language'>
           {user ? <SnippetPlayground user={user}/> : <Redirect to='/'/>}
+        </Route>
+        <Route path='/profile'>
+          {user ? <User user={user}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  

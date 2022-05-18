@@ -22,6 +22,7 @@ const Homepage = ({user, setUser}) => {
       
       if (resUser.savedUser){
         resUser.savedUser.projects.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
+        resUser.savedUser.snippets.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
         if(!resUser.userExisted) {
           createUserFolder(resUser.savedUser.id)
           createProjectsFolder(resUser.savedUser.id)
