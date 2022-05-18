@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { createNewFile, createNewProject, createSnippetFile, updateFile } from '../../../services/fileExplorer/apiCalls'
+import { createNewFile, createNewProject, createSnippetFile } from '../../../services/fileExplorer/apiCalls'
 import { updateUserProjectsList } from '../../../services/user/apiCalls'
 import { useHistory } from 'react-router-dom';
-import { code } from './hmtlBoilerplate';
 
 
 const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
@@ -24,7 +23,6 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
       if (projectInfo.type === 'projects'){
         await createNewProject(user.id, res.dirName, projectInfo.type)
         await createNewFile(user.id, '/', 'index.html', res.dirName)
-        //await updateFile(code, user.id, res.dirName, '/index.html')
         setOpenNewProjectModal(false)
         history.push(`/editor/${projectInfo.type}/${res.dirName}`)
       }

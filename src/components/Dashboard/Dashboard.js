@@ -4,6 +4,7 @@ import ProjectsList from './ProjectsList';
 import Modal from 'react-modal'
 import { customStyles } from '../CodePlayGround/folderModalStyles';
 import NewProjectModal from './Modals/NewProjectModal';
+import SnippetsList from './SnippetsList';
 
 Modal.setAppElement('#root')
 const cS = JSON.parse(JSON.stringify(customStyles));
@@ -16,6 +17,7 @@ const Dashboard = ({user, setUser}) => {
       <>
         <Navbar user={user} setOpenNewProjectModal={setOpenNewProjectModal}/>
         <ProjectsList user={user}/>
+        <SnippetsList user={user}/>
 
         <Modal
         isOpen={openNewProjectModal}

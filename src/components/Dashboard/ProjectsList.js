@@ -13,7 +13,7 @@ const ProjectsList = ({user}) => {
                     {projectsList.length === 0 ? 
                     <div className='text-lg'><i>No recent projects</i></div> : 
                     projectsList.map(project => (
-                        <ProjectBlock key={project.id} name={project.name} description={project.description}/>
+                        <ProjectBlock key={project.id} project={project}/>
                     ))}
                 </div>
             </div>
