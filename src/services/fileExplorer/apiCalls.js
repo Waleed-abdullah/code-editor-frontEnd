@@ -69,7 +69,7 @@ const getProjectDir = async (userID, currProjectName) => {
 }
 
 const getFileContent = async (userID, currProjectName, insidePath) => {
-    const url = baseURL + 'getContent/?userID=' + userID + '&currProjectDir=' + currProjectName + '&insidePath=' + insidePath
+    const url = baseURL + 'getContent?userID=' + userID + '&currProjectDir=' + currProjectName + '&insidePath=' + insidePath
     const res = await axios.get(url)
     return res.data.data;
 }

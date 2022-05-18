@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard/Dashboard.js";
 import Homepage from './components/Homepage/Homepage.js'
 import SnippetPlayground from "./components/CodePlayGround/SnippetPlayground.js";
 import User from "./components/UserProfile/User.js";
+import SearchResults from "./components/UserProfile/SearchResults.js";
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -23,6 +24,12 @@ const App = () => {
         </Route>
         <Route path='/profile'>
           {user ? <User user={user}/> : <Redirect to='/'/>}
+        </Route>
+        <Route path='/search/:query'>
+          {user ? <SearchResults user={user}/> : <Redirect to='/'/>}
+        </Route>
+        <Route path='/users/profile/:id'>
+          {user ? <User/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  

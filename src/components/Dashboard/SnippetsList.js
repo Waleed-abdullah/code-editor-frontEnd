@@ -6,7 +6,7 @@ const SnippetsList = ({user}) => {
     const location = useLocation()
     let snippetsList
     let ignore = false
-    if (location.pathname === '/profile/@me'){
+    if (location.pathname.includes('/users/profile')){
         ignore = true
         snippetsList = user.snippets        
     }
@@ -27,7 +27,7 @@ const SnippetsList = ({user}) => {
                 
                 {user.snippets.length > 3 && !ignore ?
                 <div className='pl-2 text-md font-bold pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
-                    <Link to={`/profile/@me`}>See more</Link>
+                    <Link to={`/users/profile/${user.id}`}>See more</Link>
                 </div>
                 : null}
             </div>

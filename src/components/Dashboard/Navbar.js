@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import ReactTooltip from 'react-tooltip';
 import { IoMdNotifications } from 'react-icons/io'
 import { CgMathPlus } from 'react-icons/cg'
+import { useHistory } from 'react-router-dom'
 // import { MdNotificationsActive } from 'react-icons/md'
 
 const Navbar = ({user, setOpenNewProjectModal}) => {
+    let history = useHistory()
+    const [search, setSearch] = useState()
+    const handleKeyDown = (event) => {
+        if (event.code === 'Enter'){
+            history.push(`/search/${search}`)
+        }
+    }
+
   return (
     <>
         <Helmet>
@@ -23,7 +32,7 @@ const Navbar = ({user, setOpenNewProjectModal}) => {
                 </div>
 
                 <div className='mt-0.5' style={{width: '40%'}}>
-                    <input className='w-full rounded-md pl-2 text-black py-1' type='text' placeholder='Search users'/>
+                    <input onChange={(event) => setSearch(event.target.value)} onKeyDown={handleKeyDown} className='w-full rounded-md pl-2 text-black py-1' type='text' placeholder='Search users'/>
                 </div>
 
                 <div className='flex flex-row-reverse' style={{width: "30%"}}>
