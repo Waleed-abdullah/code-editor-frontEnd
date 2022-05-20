@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ProjectBlock from './ProjectBlock'
 
-const ProjectsList = ({user}) => {
+const ProjectsList = ({user, showClone, loggedInUser, setUser}) => {
     const location = useLocation()
     let projectsList
     let ignore = false
@@ -21,7 +21,7 @@ const ProjectsList = ({user}) => {
                     {projectsList.length === 0 ? 
                     <div className='text-lg'><i>No recent projects</i></div> : 
                     projectsList.map(project => (
-                        <ProjectBlock key={project.id} project={project}/>
+                        <ProjectBlock key={project.id} project={project} showClone={showClone} loggedInUser={loggedInUser} profileID={user.id} setUser={setUser}/>
                     ))}
                 </div>
                 

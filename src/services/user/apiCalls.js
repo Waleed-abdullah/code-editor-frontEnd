@@ -26,9 +26,15 @@ const getUser = async (id) => {
     return res.data.userFound
 }
 
+const cloneProject = async (fromUserID, toUserID, fromUserProjectName, toUserProjectName) => {
+    const url = baseURL + 'clone'
+    await axios.post(url, {fromUserID, toUserID, fromUserProjectName, toUserProjectName})
+}
+
 export {
     createUser,
     updateUserProjectsList,
     getUsers,
     getUser,
+    cloneProject,
 }

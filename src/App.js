@@ -29,7 +29,7 @@ const App = () => {
           {user ? <SearchResults user={user}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/users/profile/:id'>
-          {user ? <User/> : <Redirect to='/'/>}
+          {user ? <User user={user} setUser={setUser}/> : <Redirect to='/'/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  

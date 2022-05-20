@@ -15,7 +15,7 @@ const Dashboard = ({user, setUser}) => {
   const [openNewProjectModal, setOpenNewProjectModal] = useState(false)
   return (
       <>
-        <Navbar user={user} setOpenNewProjectModal={setOpenNewProjectModal}/>
+        <Navbar user={user} setUser={setUser} setOpenNewProjectModal={setOpenNewProjectModal}/>
         <ProjectsList user={user}/>
         <SnippetsList user={user}/>
 
