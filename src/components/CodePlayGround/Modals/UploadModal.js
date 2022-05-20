@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { uploadFile } from '../../../services/fileExplorer/apiCalls'
 
-const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
+const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData, user, currentProject}) => {
     const [file, setFile] = useState(null)
     const [filePath, setFilePath] = useState(folderSelectedRef.current)
 
@@ -17,7 +17,7 @@ const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
             alert('No file uploaded')
             return
         }
-        await uploadFile('abd', 'TestDir', filePath, file)
+        await uploadFile(user.id, currentProject, filePath, file)
         fetchData()
         setOpenUploadModal(false)
         setFile(null)
@@ -46,7 +46,8 @@ const UploadModal = ({setOpenUploadModal, folderSelectedRef, fetchData}) => {
             id='filePath' 
             type='text' 
             name='filePath' 
-            placeholder='Enter Path' 
+            placeholder='Enter Path'
+            required
             onChange={(event) => setFilePath(event.target.value)}></input>
         </div>
 
