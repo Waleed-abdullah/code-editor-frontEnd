@@ -16,14 +16,13 @@ const ProjectBlock = ({project, showClone, loggedInUser, profileID, setUser}) =>
         res.updatedUser.snippets.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
         setUser(res.updatedUser)
         await cloneProject(profileID, loggedInUser.id, project.name, res.dirName)
-        console.log('Done')
     }
 
     return (
         <>
             <div className='mr-4 px-2 w-56 rounded-xl glass mb-2'>
                 <div className='text-lg font-bold pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
-                    <Link to={`/editor/projects/${project.name}`}>{project.name}</Link>
+                    {loggedInUser.id === profileID ? <Link to={`/editor/projects/${project.name}`}>{project.name}</Link> : project.name}
                 </div>
                 <div className='pb-4 mt-1'>
                     {project.description === '' ? "No description provided" : project.description}

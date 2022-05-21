@@ -9,10 +9,6 @@ const SnippetMonaco = ({user, language, currentProject, fileContent, setFileCont
         fetchContent()
     }, [])
 
-    useEffect(() => {
-        console.log(fileContent)
-    }, [fileContent])
-
     const handleEditorChange = async (value, event) => {
         if (event.changes[0].text === '\r\n' || event.changes[0].text === ""){
             await updateSnippet(value, user.id, currentProject, language)
@@ -22,6 +18,7 @@ const SnippetMonaco = ({user, language, currentProject, fileContent, setFileCont
 
     const fetchContent = async () => {
         const data = await getSnippetContent(user.id, currentProject, language)
+        console.log(data)
         setFileContent(data)
     }
 
@@ -40,8 +37,9 @@ const SnippetMonaco = ({user, language, currentProject, fileContent, setFileCont
                     height='100%'
                     path={'Snippet.'+language}
                     defaultValue={fileContent}
+                    value={fileContent}
                     theme='vs-dark'
-                    onChange={handleEditorChange}    
+                    onChange={handleEditorChange}
                 />
             </div>
         </>
