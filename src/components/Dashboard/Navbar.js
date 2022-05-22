@@ -42,11 +42,12 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
                     <ReactTooltip/>
                 </div>
 
-                <button style={{backgroundColor: "#0079F2"}} className='text-white 
-                    text-center w-20 rounded-xl 
-                    font-extrabold text-lg font-mono 
-                    border-2 border-transparent 
-                    hover:border-blue-400 ml-5' onClick={() => setUser(null)}>
+                <button className='text-white 
+                    text-center w-20 rounded-lg 
+                    text-lg font-mono 
+                    border-transparent 
+                    bg-blue-500
+                    hover:bg-blue-600 ml-5' onClick={() => setUser(null)}>
                     Log out
                 </button>
 

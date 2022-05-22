@@ -55,26 +55,26 @@ const FileExplorer = ({setOpenFile, user, currentProject}) => {
             
             {/*Header*/}
             <div className='flex justify-between sticky' style={{borderBottomWidth: '2px', borderBottomColor: 'rgb(108, 199, 246)'}}>
-                <div className='ml-2 font-semibold text-2xl'>Files</div>
-                <div className='flex flex-row-reverse'>
+                <div className='ml-2 font-semibold text-lg mt-2'>Files</div>
+                <div className='flex flex-row-reverse mt-1'>
                     <div className='ml-2 py-2'>
-                        <AiFillFileAdd size='20px' data-tip='New File' onClick={() => setOpenFileModal(true)}/>
+                        <AiFillFileAdd size='18px' data-tip='New File' onClick={() => setOpenFileModal(true)}/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <AiFillFolderAdd size='20px' data-tip='New Folder' onClick={() => setOpenFolderModal(true)}/>
+                        <AiFillFolderAdd size='18px' data-tip='New Folder' onClick={() => setOpenFolderModal(true)}/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <ImBin2 size='17px' data-tip='Delete' onClick={() => setOpenDeleteModal(true)}/>
+                        <ImBin2 size='16px' data-tip='Delete' onClick={() => setOpenDeleteModal(true)}/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <BiRename size='19px' data-tip='Rename' onClick={() => setOpenRenameModal(true)}/>
+                        <BiRename size='16px' data-tip='Rename' onClick={() => setOpenRenameModal(true)}/>
                         <ReactTooltip/>
                     </div>
                     <div className='ml-2 py-2.5'>
-                        <BsUpload size='19px' data-tip='Upload' onClick={() => setOpenUploadModal(true)}/>
+                        <BsUpload size='16px' data-tip='Upload' onClick={() => setOpenUploadModal(true)}/>
                         <ReactTooltip/>
                     </div>
                 </div>

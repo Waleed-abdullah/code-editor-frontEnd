@@ -43,9 +43,9 @@ const FolderBlock = ({name, folders, counter, path, folderSelectedRef, fileSelec
 
   return (
       <div className='border-l-2 pl-2 w-full' style={{borderColor: 'rgb(108, 199, 246)'}}>
-        <button className='w-full flex hover:bg-slate-800 pb-0.5 pt-0.5 focus:bg-slate-700' onClick={handleClick}>
+        <button className='text-sm w-full flex hover:bg-slate-800 pb-0.5 pt-0.5 focus:bg-slate-700' onClick={handleClick}>
             {!show ? <div className='py-1 ml-1 mr-0.5' style={{color: 'rgb(100, 210, 255)'}}><AiFillFolder/></div> : <div className='py-1 ml-1 mr-0.5' style={{color: 'rgb(100, 210, 255)'}}><AiFillFolderOpen/></div>}
-            <div className='pl-1'>{name}</div>
+            <div className='pl-1 mt-0.5'>{name}</div>
         </button>
 
         {show ?
