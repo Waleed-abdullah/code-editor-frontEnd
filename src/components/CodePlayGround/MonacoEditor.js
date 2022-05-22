@@ -22,7 +22,7 @@ const MonacoEditor = ({openFile, setSaved, saved, user, currentProject}) => {
     }
 
     const handleEditorChange = async (value, event) => {
-        if (event.changes[0].text === '\r\n' || event.changes[0].text === ""){
+        if (event.changes[0].text.includes('\r\n') || event.changes[0].text === ""){
             await updateFile(value, user.id, currentProject, openFile)
             setSaved(!saved)
         }
