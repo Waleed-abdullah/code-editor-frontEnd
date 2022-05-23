@@ -24,7 +24,7 @@ const StdContainer = ({language, fileContent}) => {
                 <button className={`mt-1 ml-10  hover:text-blue-400 ${clicked[1] ? 'border-b-2 border-blue-400' : null}`} onClick={() => setClicked([false, true, false])}>Stdout</button>
                 <button className={`mt-1 ml-10  hover:text-blue-400 ${clicked[2] ? 'border-b-2 border-blue-400' : null}`} onClick={() => setClicked([false, false, true])}>Stderr</button>
 
-                <button className='mt-1 ml-10 px-4 text-lg font-semibold rounded-lg bg-blue-600 hover:bg-blue-800'
+                <button className='mt-2 ml-10 px-4 text-lg rounded-md bg-blue-600 hover:bg-blue-700'
                 onClick={handleRunClick}>Run</button>
             </div>
 

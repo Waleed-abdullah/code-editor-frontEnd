@@ -12,7 +12,7 @@ const SnippetBlock = ({snippet}) => {
                 <div className='text-md pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
                     <Link to={`/editor/snippets/${snippet.name}/${snippet.language}`}>{snippet.name}</Link>
                 </div>
-                <div className='pb-4 mt-1'>
+                <div className='pb-4 mt-1 text-sm'>
                     {snippet.description === '' ? "No description provided" : snippet.description}
                 </div>
                 <div className='pb-4'>

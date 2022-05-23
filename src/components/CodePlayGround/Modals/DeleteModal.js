@@ -26,8 +26,8 @@ const DeleteModal = ({setOpenDeleteModal, selected, fetchData, user, currentProj
             <h1 className='text-white text-lg text-center mt-5'>{`Are you sure you want to delete ${selected.current.path}`}</h1>
 
             <div className='flex justify-center mt-8'>
-                <button className='mr-5 text-white bg-red-600 w-24 rounded-lg text-xl font-semibold hover:bg-red-700 pt-1 pb-1' onClick={handleDelete}>Delete</button>
-                <button className='ml-5 text-white bg-blue-800 w-24 rounded-lg text-xl font-semibold hover:bg-blue-900 pt-1 pb-1' onClick={() => setOpenDeleteModal(false)}>Cancel</button>
+                <button className='mr-5 text-white bg-red-600 w-24 rounded-lg text-xl hover:bg-red-800 pt-1 pb-1' onClick={handleDelete}>Delete</button>
+                <button className='ml-5 text-white bg-blue-700 w-24 rounded-lg text-xl hover:bg-blue-900 pt-1 pb-1' onClick={() => setOpenDeleteModal(false)}>Cancel</button>
             </div>
         </div>
     </>

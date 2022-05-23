@@ -37,11 +37,11 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
 
   return (
     <>
-      <h1 className='text-white text-2xl mt-4 font-bold'>Create New Project/Snippet</h1>
+      <h1 className='text-white text-2xl mt-4'>Create New Project/Snippet</h1>
 
       <form onSubmit={handleNewProjectSubmit}>
         <div className='w-full mt-6'>
-          <label className='text-lg text-white' htmlFor='projectName'>Name: </label>
+          <label className='text-md text-white' htmlFor='projectName'>Name: </label>
           <input
           className='mt-2 w-full rounded-lg h-8 pl-2'
           id='projectName'
@@ -52,7 +52,7 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
         </div>
 
         <div className='w-full mt-6'>
-          <label className='text-lg text-white' htmlFor='projectDescription'>Description: </label>
+          <label className='text-md text-white' htmlFor='projectDescription'>Description: </label>
           <textarea
           className='mt-2 w-full rounded-lg h-32 pl-2 pt-2 pb-2'
           id='projectDescription'
@@ -61,7 +61,7 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
         </div>
 
         <div className='w-full mt-6'>
-          <label className='text-lg text-white' htmlFor='pORs'>Type: </label>
+          <label className='text-md text-white' htmlFor='pORs'>Type: </label>
           <select className='w-full mt-2 rounded-lg py-1 font-semibold' name='pORs' id='pORs' defaultValue='projects' onChange={(event) => setProjectInfo({...projectInfo, type: event.target.value})}>
             <option value='projects'>Project</option>
             <option value='snippets'>Snippet</option>
@@ -69,7 +69,7 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
         </div>
 
         <div className='w-full mt-6'>
-          <label className='text-lg text-white' htmlFor='languages'>Snippet Language: </label>
+          <label className='text-md text-white' htmlFor='languages'>Snippet Language: </label>
           <select disabled={projectInfo.type === 'snippets' ? false : true} className='w-full mt-2 rounded-lg py-1 font-semibold' name='languages' id='languages' defaultValue='c' onChange={(event) => setProjectInfo({...projectInfo, language: event.target.value})}>
             <option value='c'>C</option>
             <option value='cljs'>Clojure</option>
@@ -96,10 +96,10 @@ const NewProjectModal = ({setOpenNewProjectModal, user, setUser}) => {
         <div className='mt-5 flex justify-between'>
           <button 
           type='submit' 
-          className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg'>Create</button>
+          className='bg-blue-700 hover:bg-blue-900 text-white text-lg w-24 rounded-lg'>Create</button>
           <button 
           type='button' 
-          className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg' 
+          className='bg-blue-700 hover:bg-blue-900 text-white text-lg w-24 rounded-lg' 
           onClick={() => setOpenNewProjectModal(false)}>Close</button>
         </div>
       </form>
