@@ -23,9 +23,9 @@ const SearchResults = ({user}) => {
                 <Link className='hover:underline' to={`/dashboard/${user.name}`}><i>Back to Dashboard</i></Link>
             </div>
 
-            <div className='text-white text-lg mt-5 ml-3'>Search results for: {query} </div>
+            <div className='text-white text-lg mt-5 ml-5'>Search results for: <i>{query}</i> </div>
 
-            <div className='text-white block ml-3 mt-5'>
+            <div className='text-white ml-3 mt-5'>
                 {
                     results.map(r => (
                         <Result key={r.id} user={r}/> 
