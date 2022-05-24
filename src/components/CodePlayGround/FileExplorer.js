@@ -21,7 +21,7 @@ import UploadModal from './Modals/UploadModal';
 
 Modal.setAppElement('#root')
 
-const FileExplorer = ({setOpenFile}) => {
+const FileExplorer = ({setOpenFile, user, currentProject}) => {
     const [folders, setFolders] = useState()
     const [rootFiles, setRootFiles] = useState()
     const [keys, setKeys] = useState()
@@ -43,11 +43,10 @@ const FileExplorer = ({setOpenFile}) => {
     }, [])
 
     const fetchData = async () => {
-        const res = await getProjectDir('abd', 'TestDir')
+        const res = await getProjectDir(user.id, currentProject)
         setFolders(res.seenFolder)
         setRootFiles(res.rootFiles)
         setKeys(Object.keys(res.seenFolder))
-        //console.log(res.seenFolder)
     }
 
   return (
@@ -85,13 +84,13 @@ const FileExplorer = ({setOpenFile}) => {
             <div className='overflow-auto h-full pt-2 pb-2' style={{height:'89%'}}>
                 {keys ?
                     keys.map((key) => (
-                        <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
+                        <FolderBlock key={'/'+key} name={key} folders={folders[key]} counter={counter} path={'/'+key} folderSelectedRef={folderSelectedRef} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile} user={user} currentProject={currentProject}/>
                     )) : null
                 }
 
                 {rootFiles ?
                     rootFiles.map((file) => (
-                        <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile}/>
+                        <FileBlock key={'/'+file} name={file} counter={counter} path={'/'+file} fileSelectedRef={fileSelectedRef} selected={selected} setOpenFile={setOpenFile} user={user} currentProject={currentProject}/>
                     )) : null
                 }
             </div>
@@ -101,35 +100,35 @@ const FileExplorer = ({setOpenFile}) => {
         isOpen={openFolderModal}
         style={customStyles}
         contentLabel="Creat New Folder">
-            <FolderModal setOpenFolderModal={setOpenFolderModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+            <FolderModal setOpenFolderModal={setOpenFolderModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData} user={user} currentProject={currentProject}/>
         </Modal>
 
         <Modal
         isOpen={openFileModal}
         style={customStyles}
         contentLabel="Creat New File">
-            <FileModal setOpenFileModal={setOpenFileModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+            <FileModal setOpenFileModal={setOpenFileModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData} user={user} currentProject={currentProject}/>
         </Modal>
 
         <Modal
         isOpen={openDeleteModal}
         style={customStyles}
         contentLabel='Delete File/Folder'>
-            <DeleteModal setOpenDeleteModal={setOpenDeleteModal} selected={selected} fetchData={fetchData}/>
+            <DeleteModal setOpenDeleteModal={setOpenDeleteModal} selected={selected} fetchData={fetchData} user={user} currentProject={currentProject}/>
         </Modal>
 
         <Modal
         isOpen={openRenameModal}
         style={customStyles}
         contentLabel='Rename File/Folder'>
-            <RenameModal setOpenRenameModal={setOpenRenameModal} selected={selected} fetchData={fetchData}/>
+            <RenameModal setOpenRenameModal={setOpenRenameModal} selected={selected} fetchData={fetchData} user={user} currentProject={currentProject}/>
         </Modal>
 
         <Modal
         isOpen={openUploadModal}
         style={customStyles}
         contentLabel='Upload'>
-            <UploadModal setOpenUploadModal={setOpenUploadModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData}/>
+            <UploadModal setOpenUploadModal={setOpenUploadModal} folderSelectedRef={folderSelectedRef} fetchData={fetchData} user={user} currentProject={currentProject}/>
         </Modal>
     </>
   )

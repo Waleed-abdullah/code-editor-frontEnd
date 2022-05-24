@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createNewFile } from '../../../services/fileExplorer/apiCalls'
 
-const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
+const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData, user, currentProject}) => {
     const [fileName, setFileName] = useState('')
     const [filePath, setFilePath] = useState(folderSelectedRef.current)
     
@@ -13,7 +13,7 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
             alert('File name invalid!!\nCannot contain characters: / \\ : * ? " < > |')
         }
         else {
-            await createNewFile('abd', filePath, fileName, 'TestDir')
+            await createNewFile(user.id, filePath, fileName, currentProject)
             fetchData()
             setOpenFileModal(false)
         }
@@ -30,7 +30,8 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
                 className='mt-2 w-full rounded-lg h-8 pl-2' 
                 id='fileName' 
                 type='text' 
-                name='fileName'  
+                name='fileName'
+                required
                 onChange={(event) => setFileName(event.target.value)}></input>
             </div>
 
@@ -42,7 +43,8 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData}) => {
                 id='filePath' 
                 type='text' 
                 name='filePath' 
-                placeholder='Enter Path' 
+                placeholder='Enter Path'
+                required 
                 onChange={(event) => setFilePath(event.target.value)}></input>
             </div>
 

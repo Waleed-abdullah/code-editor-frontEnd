@@ -1,15 +1,48 @@
 import React from 'react'
-import LogIn from './LogIn'
 import SignUp from './SignUp'
+import { auth, provider } from '../../firebase';
+import { createUser } from '../../services/user/apiCalls';
+import { createProjectsFolder, createSnippetsFolder, createUserFolder } from '../../services/fileExplorer/apiCalls';
+import { Helmet } from 'react-helmet'
+import { useHistory } from 'react-router-dom';
 
-const Homepage = () => {
+const Homepage = ({user, setUser}) => {
+  let history = useHistory()
+
+  const handleSignIn = () => {
+    auth
+    .signInWithPopup(provider)
+    .then(async (result) => {
+      const loggedInUser = {
+        name: result.user.multiFactor.user.displayName,
+        email: result.user.multiFactor.user.email,
+        photoURL: result.user.multiFactor.user.photoURL
+      }
+      const resUser = await createUser(loggedInUser)
+      
+      if (resUser.savedUser){
+        resUser.savedUser.projects.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
+        if(!resUser.userExisted) {
+          createUserFolder(resUser.savedUser.id)
+          createProjectsFolder(resUser.savedUser.id)
+          createSnippetsFolder(resUser.savedUser.id)
+        } 
+        setUser(resUser.savedUser)
+        history.push(`/dashboard/${resUser.savedUser.name}`)
+      }
+    })
+    .catch((error) => console.log(error.message));
+  }
+
   return (
     <>
-    <div style = {{backgroundColor: 'rgb(21,21,21,1)', height: '100vh'}}>
+    <Helmet>
+      <style>{'body { background-color: rgb(21,21,21,1); }'}</style>
+    </Helmet>
+    <div>
         {/*Sign up and Log in container*/}
         <div className='w-full flex md:flex-row-reverse md:justify-start justify-center relative top-8'>
-            <SignUp/>
-            <LogIn/>
+            <SignUp handleSignIn={handleSignIn}/>
         </div>
 
         {/*Text*/}
