@@ -40,5 +40,3 @@ const App = () => {
 }
 
 export default App;
-
-// {name: 'Nouman', photoURL: ''}

@@ -21,11 +21,11 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData, user, curren
 
   return (
     <>
-        <h1 className='text-white text-2xl mt-4 font-bold'>Create New File</h1>
+        <h1 className='text-white text-2xl mt-4'>Create New File</h1>
 
         <form onSubmit={handleNewFileSubmit}>
             <div className='w-full mt-6'>
-                <label className='text-lg text-white' htmlFor='fileName'>File Name: </label><br></br>
+                <label className='text-md text-white' htmlFor='fileName'>File Name: </label><br></br>
                 <input 
                 className='mt-2 w-full rounded-lg h-8 pl-2' 
                 id='fileName' 
@@ -36,7 +36,7 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData, user, curren
             </div>
 
             <div className='w-full mt-6'>
-                <label className='text-lg text-white' htmlFor='filePath'>File Path: </label><br></br>
+                <label className='text-md text-white' htmlFor='filePath'>File Path: </label><br></br>
                 <input
                 value={filePath}
                 className='mt-2 w-full rounded-lg h-8 pl-2 pt-2 pb-2' 
@@ -51,10 +51,10 @@ const FileModal = ({setOpenFileModal, folderSelectedRef, fetchData, user, curren
             <div className='mt-5 flex justify-between'>
                 <button 
                 type='submit' 
-                className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg'>Create</button>
+                className='bg-blue-700 hover:bg-blue-900 text-white text-lg w-24 rounded-lg'>Create</button>
                 <button 
                 type='button' 
-                className='bg-blue-800 text-white text-lg font-semibold w-24 rounded-lg' 
+                className='bg-blue-700 hover:bg-blue-900 text-white text-lg w-24 rounded-lg' 
                 onClick={() => setOpenFileModal(false)}>Close</button>
             </div>
         </form>

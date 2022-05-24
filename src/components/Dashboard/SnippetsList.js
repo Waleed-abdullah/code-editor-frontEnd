@@ -15,11 +15,11 @@ const SnippetsList = ({user}) => {
     return (
         <>
             <div className='text-white mt-8 ml-6 mr-6'>
-                <h1 className='text-2xl'>Recent Snippets</h1>
+                <h1 className='text-xl'>Recent Snippets</h1>
 
                 <div className='flex justify-start w-full mt-5 flex-wrap'>
                     {snippetsList.length === 0 ? 
-                    <div className='text-lg'><i>No recent snippets</i></div> : 
+                    <div className='text-md'><i>No recent snippets</i></div> : 
                     snippetsList.map(snippet => (
                         <SnippetBlock key={snippet.id} snippet={snippet}/>
                     ))}

@@ -16,23 +16,25 @@ const ProjectBlock = ({project, showClone, loggedInUser, profileID, setUser}) =>
         res.updatedUser.snippets.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))
         setUser(res.updatedUser)
         await cloneProject(profileID, loggedInUser.id, project.name, res.dirName)
-        console.log('Done')
     }
 
     return (
         <>
             <div className='mr-4 px-2 w-56 rounded-xl glass mb-2'>
-                <div className='text-lg font-bold pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
-                    <Link to={`/editor/projects/${project.name}`}>{project.name}</Link>
+                <div className='text-md pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
+                    {loggedInUser.id === profileID ? <Link to={`/editor/projects/${project.name}`}>{project.name}</Link> : project.name}
                 </div>
-                <div className='pb-4 mt-1'>
+                <div className='pb-4 mt-1 text-sm'>
                     {project.description === '' ? "No description provided" : project.description}
                 </div>
                 {showClone ?
-                <button style={{backgroundColor: '#0079F2'}}
-                className='mb-3 text-white text-center w-16 rounded-xl
-                font-extrabold text-lg font-mono border-2 border-transparent
-                hover:border-blue-400' onClick={handleClone}>
+                <button
+                className='text-white 
+                text-center w-16 rounded-lg 
+                text-lg font-mono 
+                border-transparent 
+                bg-blue-600
+                hover:bg-blue-700 ml-1 mb-2' onClick={handleClone}>
                     Clone
                 </button> : null}
             </div>

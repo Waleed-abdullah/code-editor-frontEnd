@@ -15,11 +15,11 @@ const ProjectsList = ({user, showClone, loggedInUser, setUser}) => {
     return (
         <>
             <div className='text-white mt-8 ml-6 mr-6'>
-                <h1 className='text-2xl'>{ignore ? `Projects` : `Recent Projects`}</h1>
+                <h1 className='text-xl'>{ignore ? `Projects` : `Recent Projects`}</h1>
 
                 <div className='flex justify-start w-full mt-5 flex-wrap'>
                     {projectsList.length === 0 ? 
-                    <div className='text-lg'><i>No recent projects</i></div> : 
+                    <div className='text-md'><i>No recent projects</i></div> : 
                     projectsList.map(project => (
                         <ProjectBlock key={project.id} project={project} showClone={showClone} loggedInUser={loggedInUser} profileID={user.id} setUser={setUser}/>
                     ))}

@@ -3,11 +3,11 @@ import { auth, provider } from '../../firebase';
 
 const SignUp = ({handleSignIn}) => {
   return (
-    <button style={{backgroundColor: "#0079F2"}} className='text-white 
-    text-center w-28 rounded-xl 
-    font-extrabold text-2xl font-mono 
-    border-2 border-transparent 
-    hover:border-blue-400 mr-5' onClick={handleSignIn}>
+    <button className='text-white 
+    text-center w-24 rounded-lg 
+    text-xl font-mono 
+    bg-blue-500 
+    hover:bg-blue-600 mr-5' onClick={handleSignIn}>
         Sign Up
     </button>
   )

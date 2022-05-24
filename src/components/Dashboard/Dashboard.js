@@ -9,14 +9,14 @@ import SnippetsList from './SnippetsList';
 Modal.setAppElement('#root')
 const cS = JSON.parse(JSON.stringify(customStyles));
 cS.content.width = '30%'
-cS.content.height = '79%'
+cS.content.height = '90%'
 
 const Dashboard = ({user, setUser}) => {
   const [openNewProjectModal, setOpenNewProjectModal] = useState(false)
   return (
       <>
         <Navbar user={user} setUser={setUser} setOpenNewProjectModal={setOpenNewProjectModal}/>
-        <ProjectsList user={user}/>
+        <ProjectsList user={user} showClone={false} loggedInUser={user} setUser={setUser}/>
         <SnippetsList user={user}/>
 
         <Modal
