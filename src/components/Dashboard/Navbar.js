@@ -21,6 +21,11 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
         }
     }
 
+    const handleLogOut = () => {
+        localStorage.removeItem('logged-in-user')
+        setUser(null)
+    }
+
     return (
     <>
         <Helmet>
@@ -36,10 +41,12 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
                     </div>
                     <div className='ml-3 mt-2 hover:underline'>
                         <Menu menuButton={<MenuButton className='flex'>{user.name}<AiFillCaretDown className='mt-2.5' size='15px'></AiFillCaretDown></MenuButton>}>
-                            <MenuItem>
-                                <Link to={`/users/profile/${user.id}`}>Profile</Link>
-                            </MenuItem>
-                            <MenuItem onClick={() => setUser(null)}>
+                            <Link to={`/users/profile/${user.id}`}>
+                                <MenuItem>
+                                    Profile
+                                </MenuItem>
+                            </Link>
+                            <MenuItem onClick={handleLogOut}>
                                 Log out
                             </MenuItem>
                         </Menu>

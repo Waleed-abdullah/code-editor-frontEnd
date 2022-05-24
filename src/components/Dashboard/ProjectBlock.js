@@ -33,8 +33,8 @@ const ProjectBlock = ({project, showClone, loggedInUser, profileID, setUser}) =>
                 text-center w-16 rounded-lg 
                 text-lg font-mono 
                 border-transparent 
-                bg-blue-500
-                hover:bg-blue-600 ml-1 mb-2' onClick={handleClone}>
+                bg-blue-600
+                hover:bg-blue-700 ml-1 mb-2' onClick={handleClone}>
                     Clone
                 </button> : null}
             </div>

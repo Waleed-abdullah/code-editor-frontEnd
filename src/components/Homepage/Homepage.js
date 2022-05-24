@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
@@ -8,6 +8,13 @@ import { useHistory } from 'react-router-dom';
 
 const Homepage = ({user, setUser}) => {
   let history = useHistory()
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('logged-in-user'))){
+      setUser(JSON.parse(localStorage.getItem('logged-in-user')))
+      history.push(`/dashboard/${JSON.parse(localStorage.getItem('logged-in-user')).name}`)
+    }
+  }, [])
 
   const handleSignIn = () => {
     auth
@@ -29,6 +36,7 @@ const Homepage = ({user, setUser}) => {
           createSnippetsFolder(resUser.savedUser.id)
         } 
         setUser(resUser.savedUser)
+        localStorage.setItem('logged-in-user', JSON.stringify(resUser.savedUser))
         history.push(`/dashboard/${resUser.savedUser.name}`)
       }
     })
