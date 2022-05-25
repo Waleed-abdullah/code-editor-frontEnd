@@ -34,7 +34,7 @@ const Dashboard = ({user, setUser}) => {
         <>
           <Navbar user={user} setUser={setUser} setOpenNewProjectModal={setOpenNewProjectModal}/>
           <ProjectsList user={user} showClone={false} loggedInUser={user} setUser={setUser}/>
-          <SnippetsList user={user}/>
+          <SnippetsList user={user} loggedInUser={user}/>
 
           <Modal
           isOpen={openNewProjectModal}

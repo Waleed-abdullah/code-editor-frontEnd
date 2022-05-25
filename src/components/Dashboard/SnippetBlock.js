@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import './ProjectBlock.css'
 import { getLang } from './langSelect'
 
-const SnippetBlock = ({snippet}) => {
+const SnippetBlock = ({snippet, loggedInUser, profileID}) => {
     let lang = getLang(snippet.language)
     lang = lang[0].toUpperCase() + lang.substring(1, lang.length)
     return (
         <>
             <div className='mr-4 px-2 w-56 rounded-xl glass mb-2'>
-                <div className='text-md pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
-                    <Link to={`/editor/snippets/${snippet.name}/${snippet.language}`}>{snippet.name}</Link>
+                <div className={`text-md pt-2 ${loggedInUser.id === profileID ? 'hover:underline': ''}`} style={{color: 'rgb(108, 199, 246)'}}>
+                    {loggedInUser.id === profileID ? <Link to={`/editor/snippets/${snippet.name}/${snippet.language}`}>{snippet.name}</Link> : snippet.name}
                 </div>
                 <div className='pb-4 mt-1 text-sm'>
                     {snippet.description === '' ? "No description provided" : snippet.description}

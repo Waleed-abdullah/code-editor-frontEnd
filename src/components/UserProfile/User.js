@@ -66,7 +66,7 @@ const User = ({user, setUser}) => {
   
             <div className='ml-3'>
               <ProjectsList user={userProfile} showClone={showClone} loggedInUser={user} setUser={setUser}/>
-              <SnippetsList user={userProfile}/>
+              <SnippetsList user={userProfile} loggedInUser={user}/>
             </div>
         </>
       )

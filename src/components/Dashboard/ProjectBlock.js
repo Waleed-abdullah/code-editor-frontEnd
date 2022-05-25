@@ -21,7 +21,7 @@ const ProjectBlock = ({project, showClone, loggedInUser, profileID, setUser}) =>
     return (
         <>
             <div className='mr-4 px-2 w-56 rounded-xl glass mb-2'>
-                <div className='text-md pt-2 hover:underline' style={{color: 'rgb(108, 199, 246)'}}>
+                <div className={`text-md pt-2 ${loggedInUser.id === profileID ? 'hover:underline': ''}`} style={{color: 'rgb(108, 199, 246)'}}>
                     {loggedInUser.id === profileID ? <Link to={`/editor/projects/${project.name}`}>{project.name}</Link> : project.name}
                 </div>
                 <div className='pb-4 mt-1 text-sm'>
