@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import PlayGround from "./components/CodePlayGround/PlayGround.js";
 import Dashboard from "./components/Dashboard/Dashboard.js";
@@ -10,26 +10,29 @@ import SearchResults from "./components/UserProfile/SearchResults.js";
 const App = () => {
   const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('logged-in-user'))){
+      setUser(JSON.parse(localStorage.getItem('logged-in-user')))
+    }
+  }, [])
+
   return(
     <Router>
       <Switch>
         <Route path='/dashboard/:username'>
-          {user ? <Dashboard user={user} setUser={setUser}/> : <Redirect to='/'/>}
+          {<Dashboard user={user} setUser={setUser}/>}
         </Route>
         <Route path='/editor/projects/:projectName'>
-          {user ? <PlayGround user={user}/> : <Redirect to='/'/>}
+          {<PlayGround user={user} setUser={setUser}/>}
         </Route>
         <Route path='/editor/snippets/:snippetName/:language'>
-          {user ? <SnippetPlayground user={user}/> : <Redirect to='/'/>}
-        </Route>
-        <Route path='/profile'>
-          {user ? <User user={user}/> : <Redirect to='/'/>}
+          {<SnippetPlayground user={user} setUser={setUser}/>}
         </Route>
         <Route path='/search/:query'>
-          {user ? <SearchResults user={user}/> : <Redirect to='/'/>}
+          {<SearchResults user={user} setUser={setUser}/>}
         </Route>
         <Route path='/users/profile/:id'>
-          {user ? <User user={user} setUser={setUser}/> : <Redirect to='/'/>}
+          {<User user={user} setUser={setUser}/>}
         </Route>
         <Route path='/'>
           <Homepage user={user} setUser={setUser}/>  

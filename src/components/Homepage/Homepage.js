@@ -4,17 +4,10 @@ import { auth, provider } from '../../firebase';
 import { createUser } from '../../services/user/apiCalls';
 import { createProjectsFolder, createSnippetsFolder, createUserFolder } from '../../services/fileExplorer/apiCalls';
 import { Helmet } from 'react-helmet'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Homepage = ({user, setUser}) => {
   let history = useHistory()
-
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem('logged-in-user'))){
-      setUser(JSON.parse(localStorage.getItem('logged-in-user')))
-      history.push(`/dashboard/${JSON.parse(localStorage.getItem('logged-in-user')).name}`)
-    }
-  }, [])
 
   const handleSignIn = () => {
     auth

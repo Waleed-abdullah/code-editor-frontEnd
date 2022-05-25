@@ -24,6 +24,7 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
     const handleLogOut = () => {
         localStorage.removeItem('logged-in-user')
         setUser(null)
+        history.push(`/`)
     }
 
     return (
