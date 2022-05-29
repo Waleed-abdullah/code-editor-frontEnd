@@ -27,7 +27,7 @@ const SnippetPlayground = ({user, setUser}) => {
         return (
             <>
                 <div className='text-white overflow-hidden' style={{height: '100vh', backgroundColor: 'rgb(21,21,21,1)'}}>
-                    <Navbar user={user} currentProject={snippetName}/>
+                    <Navbar user={user} currentProject={snippetName} openFile={null}/>
     
                     <div className='w-full h-full'>
                         <SnippetMonaco user={user} language={language} currentProject={snippetName} fileContent={fileContent} setFileContent={setFileContent}/>

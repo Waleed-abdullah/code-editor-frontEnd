@@ -31,10 +31,16 @@ const cloneProject = async (fromUserID, toUserID, fromUserProjectName, toUserPro
     await axios.post(url, {fromUserID, toUserID, fromUserProjectName, toUserProjectName})
 }
 
+const downloadPhoto = async (photoURL, id, name) => {
+    const url = baseURL + 'download'
+    await axios.post(url, {photoURL, name, id})
+}
+
 export {
     createUser,
     updateUserProjectsList,
     getUsers,
     getUser,
     cloneProject,
+    downloadPhoto
 }

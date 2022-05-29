@@ -38,7 +38,7 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
                 
                 <div className='flex' style={{width: '30%'}}>
                     <div className='ml-4'>
-                        <Link to={`/users/profile/${user.id}`}><img className='rounded-full w-8 h-8' alt='profilePic' src={user.photoURL}/></Link>
+                        <Link to={`/users/profile/${user.id}`}><img className='rounded-full w-8 h-8' alt='profilePic' src={`http://localhost:5000/get/${user.id}/${user.name}.png`}/></Link>
                     </div>
                     <div className='ml-3 mt-2 hover:underline'>
                         <Menu menuButton={<MenuButton className='flex'>{user.name}<AiFillCaretDown className='mt-2.5' size='15px'></AiFillCaretDown></MenuButton>}>

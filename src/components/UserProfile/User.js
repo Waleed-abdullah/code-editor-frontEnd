@@ -60,7 +60,7 @@ const User = ({user, setUser}) => {
             </div>
   
             <div className='w-full flex mt-5 ml-8 text-white'>
-              <img className='rounded-full w-20 h-20' alt='profilePic' src={userProfile.photoURL}/>
+              <img className='rounded-full w-20 h-20' alt='profilePic' src={`http://localhost:5000/get/${userProfile.id}/${userProfile.name}.png`}/>
               <div className='mt-10 ml-5 text-4xl'>{userProfile.name}</div>
             </div>
   

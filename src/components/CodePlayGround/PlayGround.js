@@ -30,7 +30,7 @@ const PlayGround = ({user, setUser}) => {
         <>
           <div className='text-white overflow-hidden' style={{height: '100vh', backgroundColor: 'rgb(21,21,21,1)'}}>
               
-              <Navbar user={user} currentProject={projectName}/>
+              <Navbar user={user} currentProject={projectName} openFile={openFile}/>
 
               <div className='flex w-full' style={{height: '91.5%'}}>
                   <FileExplorer setOpenFile={setOpenFile} user={user} currentProject={projectName}/>

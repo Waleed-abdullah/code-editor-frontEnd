@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
-import { createUser } from '../../services/user/apiCalls';
+import { createUser, downloadPhoto } from '../../services/user/apiCalls';
 import { createProjectsFolder, createSnippetsFolder, createUserFolder } from '../../services/fileExplorer/apiCalls';
 import { Helmet } from 'react-helmet'
 import { useHistory, useLocation } from 'react-router-dom';
@@ -27,6 +27,7 @@ const Homepage = ({user, setUser}) => {
           createUserFolder(resUser.savedUser.id)
           createProjectsFolder(resUser.savedUser.id)
           createSnippetsFolder(resUser.savedUser.id)
+          downloadPhoto(resUser.savedUser.photoURL, resUser.savedUser.id, resUser.savedUser.name)
         } 
         setUser(resUser.savedUser)
         localStorage.setItem('logged-in-user', JSON.stringify(resUser.savedUser))
