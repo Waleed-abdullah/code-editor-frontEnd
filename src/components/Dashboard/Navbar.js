@@ -1,16 +1,6 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import ReactTooltip from 'react-tooltip';
-import { AiFillCaretDown } from 'react-icons/ai'
-import { CgMathPlus } from 'react-icons/cg'
 import { useHistory, Link } from 'react-router-dom'
-import {
-    Menu,
-    MenuItem,
-    MenuButton
-} from '@szhsin/react-menu';
-import '@szhsin/react-menu/dist/index.css';
-import '@szhsin/react-menu/dist/transitions/slide.css';
 
 const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
     let history = useHistory()
@@ -41,16 +31,7 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
                         <Link to={`/users/profile/${user.id}`}><img className='rounded-full w-8 h-8' alt='profilePic' src={`http://localhost:5000/get/${user.id}/${user.name}.png`}/></Link>
                     </div>
                     <div className='ml-3 mt-2 hover:underline'>
-                        <Menu menuButton={<MenuButton className='flex'>{user.name}<AiFillCaretDown className='mt-2.5' size='15px'></AiFillCaretDown></MenuButton>}>
-                            <Link to={`/users/profile/${user.id}`}>
-                                <MenuItem>
-                                    Profile
-                                </MenuItem>
-                            </Link>
-                            <MenuItem onClick={handleLogOut}>
-                                Log out
-                            </MenuItem>
-                        </Menu>
+                        <div><Link to={`/users/profile/${user.id}`}>{user.name}</Link></div>
                     </div>
                 </div>
 
@@ -59,8 +40,7 @@ const Navbar = ({user, setUser, setOpenNewProjectModal}) => {
                 </div>
 
                 <div className='flex flex-row-reverse ml-28' style={{width: "20%"}}>
-                    <div className='mt-1 bg-blue-500 rounded-md hover:bg-blue-600'><CgMathPlus data-tip='New Project' color='white' size='30px' onClick={() => setOpenNewProjectModal(true)}/></div>
-                    <ReactTooltip/>
+                    <button className='bg-blue-600 hover:bg-blue-800 px-2 rounded-md' onClick={handleLogOut}>Log out</button>
                 </div>
 
             </div>

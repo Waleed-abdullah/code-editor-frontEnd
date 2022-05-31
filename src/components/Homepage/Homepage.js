@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import SignUp from './SignUp'
 import { auth, provider } from '../../firebase';
 import { createUser, downloadPhoto } from '../../services/user/apiCalls';
 import { createProjectsFolder, createSnippetsFolder, createUserFolder } from '../../services/fileExplorer/apiCalls';
 import { Helmet } from 'react-helmet'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Homepage = ({user, setUser}) => {
   let history = useHistory()

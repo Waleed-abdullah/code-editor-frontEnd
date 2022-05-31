@@ -7,6 +7,8 @@ import NewProjectModal from './Modals/NewProjectModal';
 import SnippetsList from './SnippetsList';
 import { getUser } from '../../services/user/apiCalls'
 import { useHistory } from 'react-router-dom';
+import { CgMathPlus } from 'react-icons/cg'
+import ReactTooltip from 'react-tooltip';
 
 Modal.setAppElement('#root')
 const cS = JSON.parse(JSON.stringify(customStyles));
@@ -35,6 +37,11 @@ const Dashboard = ({user, setUser}) => {
           <Navbar user={user} setUser={setUser} setOpenNewProjectModal={setOpenNewProjectModal}/>
           <ProjectsList user={user} showClone={false} loggedInUser={user} setUser={setUser}/>
           <SnippetsList user={user} loggedInUser={user}/>
+
+          <div className='bg-blue-600 hover:bg-blue-800 rounded-full fixed bottom-10 right-8 text-white flex'>
+            <CgMathPlus data-tip='Create new project' color='white' size='50px' onClick={() => setOpenNewProjectModal(true)}/>
+            <ReactTooltip/>
+          </div>
 
           <Modal
           isOpen={openNewProjectModal}
